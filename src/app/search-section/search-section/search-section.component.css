@@ -1,0 +1,15 @@
+.search-section {
+  padding: 10px;
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: 50% 30% 1fr;
+  align-items: center;
+}
+
+.search-section__input {
+  width: 100%;
+}
+
+.search-section__search-button {
+  justify-self: start;
+}

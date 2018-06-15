@@ -1,0 +1,26 @@
+<mat-card class="courses-list__item">
+  <div>
+    <div class="courses-list__item-info-area">
+      <span>
+        {{ coursesListItem.title }}
+      </span>
+      <span>
+        {{ coursesListItem.duration }}min
+      </span>
+      <span>
+        {{ coursesListItem.creationDate }}
+      </span>
+    </div>
+    <span>
+      {{ coursesListItem.description }}
+    </span>
+  </div>
+  <div>
+    <button class="button__custom-font courses-list__item-button" mat-raised-button color="primary">
+      Edit
+    </button>
+    <button class="button__custom-font courses-list__item-button" mat-raised-button color="primary">
+      Delete
+    </button>
+  </div>
+</mat-card>
