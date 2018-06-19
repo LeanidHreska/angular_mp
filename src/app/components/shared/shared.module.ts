@@ -13,4 +13,4 @@ import { LogoComponent } from './logo/logo.component';
   declarations: [HeaderComponent, FooterComponent, LogoComponent],
   exports: [HeaderComponent, FooterComponent]
 })
-export class CoreModule { }
+export class SharedModule { }
