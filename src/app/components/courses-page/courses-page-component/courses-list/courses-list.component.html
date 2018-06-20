@@ -2,6 +2,7 @@
   <app-courses-list-item
     *ngFor="let item of coursesList"
     [coursesListItem]="item"
+    (deletedCourse)="onDeleted($event)"
   >
 
   </app-courses-list-item>

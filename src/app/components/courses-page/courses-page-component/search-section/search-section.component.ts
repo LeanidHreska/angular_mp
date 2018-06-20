@@ -12,4 +12,7 @@ export class SearchSectionComponent implements OnInit {
   ngOnInit() {
   }
 
+  onFind($event) {
+    console.log($event.target.value);
+  }
 }

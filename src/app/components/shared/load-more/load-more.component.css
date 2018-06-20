@@ -1,0 +1,15 @@
+.load-more {
+  height: 50px;
+  text-align: center;
+  margin: 10px;
+  padding: 0;
+  text-transform: uppercase;
+  font: inherit;
+  font-style: italic;
+  display: grid;
+  align-content: center;
+}
+
+.load-more:hover {
+  cursor: pointer;
+}

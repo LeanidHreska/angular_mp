@@ -8,8 +8,12 @@ import { CoursesListItem } from '../models/courses-list-item.model';
 })
 export class CoursesListComponent implements OnInit {
 
-  public coursesList: CoursesListItem[] = [
-    {
+  public coursesList: CoursesListItem[] = [];
+
+  constructor() { }
+
+  ngOnInit() {
+    this.coursesList = [{
       id: 1,
       title: 'Video course 1',
       creationDate: '01.01.2018',
@@ -21,12 +25,10 @@ export class CoursesListComponent implements OnInit {
       creationDate: '01.01.2018',
       duration: 15,
       description: 'someDesc'
-    }
-  ] 
-
-  constructor() { }
-
-  ngOnInit() {
+    }];
   }
 
+  onDeleted(courseId: number) {
+    console.log(courseId);
+  }
 }

@@ -19,7 +19,12 @@
     <button class="button__custom-font courses-list__item-button" mat-raised-button color="primary">
       Edit
     </button>
-    <button class="button__custom-font courses-list__item-button" mat-raised-button color="primary">
+    <button
+      class="button__custom-font courses-list__item-button"
+      mat-raised-button
+      color="primary"
+      (click)="onDelete(coursesListItem.duration)"
+    >
       Delete
     </button>
   </div>

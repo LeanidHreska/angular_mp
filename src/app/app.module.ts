@@ -4,20 +4,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './components/shared/shared.module';
-import { SearchSectionModule } from './components/search-section/search-section.module';
-import { CoursesListModule } from './components/courses-list/courses-list.module';
 import { UserModule } from './components/user/user.module';
+import { CoursesPageModule } from './components/courses-page/courses-page.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
-    SearchSectionModule,
-    CoursesListModule,
+    CoursesPageModule,
     UserModule
   ],
   providers: [],
