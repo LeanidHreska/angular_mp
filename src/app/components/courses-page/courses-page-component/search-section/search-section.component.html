@@ -1,6 +1,6 @@
 <section class="search-section">
   <form>
-    <mat-form-field class="search-section__input">
+    <mat-form-field class="search-section__input" (change)="onFind($event)">
       <input matInput placeholder="Name, fragment or date">
     </mat-form-field>
   </form>
