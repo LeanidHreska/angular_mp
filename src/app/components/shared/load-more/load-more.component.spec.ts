@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MatCardModule } from '@angular/material';
+
 import { LoadMoreComponent } from './load-more.component';
 
 describe('LoadMoreComponent', () => {
@@ -8,7 +10,12 @@ describe('LoadMoreComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoadMoreComponent ]
+      declarations: [
+        LoadMoreComponent,
+      ],
+      imports: [
+        MatCardModule,
+      ]
     })
     .compileComponents();
   }));

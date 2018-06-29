@@ -16,7 +16,14 @@ import { CoursesListItemComponent } from './courses-page-component/courses-list/
     MatInputModule,
     SharedModule
   ],
-  declarations: [CoursesPageComponent, SearchSectionComponent, CoursesListComponent, CoursesListItemComponent],
-  exports: [CoursesPageComponent]
+  declarations: [
+    CoursesPageComponent,
+    SearchSectionComponent,
+    CoursesListComponent,
+    CoursesListItemComponent
+  ],
+  exports: [
+    CoursesPageComponent
+  ]
 })
 export class CoursesPageModule { }
