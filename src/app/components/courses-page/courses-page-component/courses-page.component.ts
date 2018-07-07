@@ -30,9 +30,7 @@ export class CoursesPageComponent implements OnInit {
   }
 
   onFilter(coursesList: CoursesListItem[]) {
-   // console.log(coursesList)
     this.coursesList = coursesList;
-    console.log('page')
   }
 
 }
