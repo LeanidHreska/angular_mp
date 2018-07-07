@@ -15,6 +15,17 @@ export class CoursesListItemComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  setCourseBorder(creationDate: number) {
+    const currentDate = Date.now();
+    if ((creationDate < currentDate) && (creationDate >= currentDate - (14 * 86400))) {
+      return { border: '2px solid #81e390'};
+    }
+
+    if (creationDate > currentDate) {
+      return { border: '2px solid #7685cf'};
+    }
+  }
 
   onDelete(courseId: number) {
     this.deletedCourse.emit(courseId);

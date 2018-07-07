@@ -1,13 +1,23 @@
 <section class="search-section">
   <form>
-    <mat-form-field class="search-section__input" (change)="onFind($event)">
+    <mat-form-field
+      class="search-section__input"
+      (change)="onFind($event)"
+    >
       <input matInput placeholder="Name, fragment or date">
     </mat-form-field>
   </form>
-  <button mat-raised-button color="primary" class="button__custom-font search-section__search-button">
-      Search
+  <button
+    mat-raised-button color="primary"
+    class="button__custom-font search-section__search-button"
+    (click)="onClick()"
+  >
+    Search
   </button>
-  <button mat-raised-button color="accent" class="button__custom-font">
+  <button
+    mat-raised-button color="accent"
+    class="button__custom-font"
+  >
     Add course
   </button>
 </section>

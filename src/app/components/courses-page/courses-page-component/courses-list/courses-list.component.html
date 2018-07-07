@@ -1,9 +1,15 @@
 <div>
   <app-courses-list-item
-    *ngFor="let item of coursesList"
+    *ngFor="let item of coursesList | sortBy: ['creationDate']"
     [coursesListItem]="item"
     (deletedCourse)="onDeleted($event)"
   >
 
   </app-courses-list-item>
+  <mat-card
+    class="courses-list__nodata"
+    *ngIf="coursesList.length === 0"
+  >
+    No data. Feel free to add new course
+  </mat-card>
 </div>

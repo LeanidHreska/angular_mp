@@ -16,3 +16,13 @@
   grid-template-columns: 5fr 1fr 1fr;
   margin: 5px 0;
 }
+
+.courses-list__rate-icon {
+  color: #ffd740;
+  transition: color ease-in-out .3s;
+}
+
+.courses-list__rate-icon:hover {
+  cursor: pointer;
+  color: #673ab7;
+}
