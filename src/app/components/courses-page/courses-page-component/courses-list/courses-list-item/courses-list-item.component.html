@@ -1,14 +1,23 @@
-<mat-card class="courses-list__item">
+<mat-card
+  class="courses-list__item"
+  [ngStyle]="setCourseBorder(coursesListItem.creationDate)"
+  >
   <div>
     <div class="courses-list__item-info-area">
       <span>
-        {{ coursesListItem.title }}
+        {{ coursesListItem.title | uppercase }}
+        <i
+          class="fa fa-star courses-list__rate-icon"
+          *ngIf="coursesListItem.topRated"
+        >
+
+        </i>
       </span>
       <span>
-        {{ coursesListItem.duration }}min
+        {{ coursesListItem.duration | duration }}
       </span>
       <span>
-        {{ coursesListItem.creationDate }}
+        {{ coursesListItem.creationDate | date: 'dd.MM.yyyy'}}
       </span>
     </div>
     <span>

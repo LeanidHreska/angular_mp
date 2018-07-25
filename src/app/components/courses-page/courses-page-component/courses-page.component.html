@@ -1,3 +1,10 @@
-<app-search-section></app-search-section>
-<app-courses-list></app-courses-list>
+<app-search-section
+  [coursesList]="coursesList"
+  (filteredCourses)="onFilter($event)"
+>
+</app-search-section>
+<app-courses-list
+  [coursesList]="coursesList"
+>
+</app-courses-list>
 <app-load-more></app-load-more>

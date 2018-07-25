@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CoursesListItem } from '../models/courses-list-item.model';
+import { FilterByPipe, Options } from '../../../../pipes/filter-by.pipe';
 
 @Component({
   selector: 'app-search-section',
@@ -6,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-section.component.css']
 })
 export class SearchSectionComponent implements OnInit {
+  
+  @Input() public coursesList: CoursesListItem[];
+  @Output() filteredCourses = new EventEmitter<Object[]>();
+
+  public value: string = '';
 
   constructor() { }
 
@@ -13,6 +20,16 @@ export class SearchSectionComponent implements OnInit {
   }
 
   onFind($event) {
-    console.log($event.target.value);
+    this.value = $event.target.value;
+  }
+
+  onClick() {
+    const options: Options = {
+      field: 'title',
+      value: this.value,
+    };
+
+    const filteredCourses = new FilterByPipe().transform(this.coursesList, options);
+    this.filteredCourses.emit(filteredCourses);
   }
 }
