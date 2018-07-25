@@ -12,7 +12,16 @@ import { LoadMoreComponent } from './load-more/load-more.component';
     MatButtonModule,
     MatCardModule
   ],
-  declarations: [HeaderComponent, FooterComponent, LogoComponent, LoadMoreComponent],
-  exports: [HeaderComponent, FooterComponent, LoadMoreComponent]
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    LogoComponent,
+    LoadMoreComponent
+  ],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    LoadMoreComponent
+  ]
 })
 export class SharedModule { }
