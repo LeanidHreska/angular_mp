@@ -7,6 +7,8 @@ import { SharedModule } from './components/shared/shared.module';
 import { UserModule } from './components/user/user.module';
 import { CoursesPageModule } from './components/courses-page/courses-page.module';
 import { CoursesService } from './services/courses/courses.service';
+import { LoginPageModule } from './components/login-page/login-page.module';
+import { AuthService } from './services/auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -18,8 +20,12 @@ import { CoursesService } from './services/courses/courses.service';
     SharedModule,
     CoursesPageModule,
     UserModule,
+    LoginPageModule
   ],
-  providers: [CoursesService],
+  providers: [
+    CoursesService,
+    AuthService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,15 @@
 .header {
   height: 70px;
   padding: 10px;
-  display: grid;
-  grid-template-columns: 1fr 5fr 1fr 1fr;
+  display: flex;
   align-items: center;
   border: 1px solid black;
+}
+
+.header__authActions {
+  margin-left: auto;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
