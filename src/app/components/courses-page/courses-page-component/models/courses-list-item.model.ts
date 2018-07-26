@@ -1,8 +1,8 @@
 export interface CoursesListItem {
-  id: Number,
-  title: String,
-  creationDate: Number,
-  duration: Number,
-  description: String,
-  topRated: Boolean,
+  id: number,
+  title: string,
+  creationDate: number,
+  duration: number,
+  description: string,
+  topRated: boolean,
 }

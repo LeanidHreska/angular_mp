@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { CoursesListItem } from '../../models/courses-list-item.model';
+import { MatDialog } from '@angular/material';
+import { ModalComponent } from '../../../../shared/modal/modal.component';
 
 @Component({
   selector: 'app-courses-list-item',
@@ -11,7 +13,7 @@ export class CoursesListItemComponent implements OnInit {
   @Input() public coursesListItem: CoursesListItem;
   @Output() deletedCourse = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -31,4 +33,19 @@ export class CoursesListItemComponent implements OnInit {
     this.deletedCourse.emit(courseId);
   }
 
+  openDialogForDelete() {
+    const dialogRef = this.dialog.open(ModalComponent,
+      {
+        width: '40%',
+        data: {
+          title: 'Do you really want to delete this course?',
+        }
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.onDelete(this.coursesListItem.id)
+      }
+    });
+  }
 }

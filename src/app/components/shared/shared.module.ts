@@ -5,6 +5,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoComponent } from './logo/logo.component';
 import { LoadMoreComponent } from './load-more/load-more.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   imports: [
@@ -16,12 +17,14 @@ import { LoadMoreComponent } from './load-more/load-more.component';
     HeaderComponent,
     FooterComponent,
     LogoComponent,
-    LoadMoreComponent
+    LoadMoreComponent,
+    ModalComponent,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     LoadMoreComponent
-  ]
+  ],
+  entryComponents: [ModalComponent],
 })
 export class SharedModule { }

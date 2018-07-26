@@ -1,0 +1,9 @@
+.modal__confirm-button {
+  position: absolute;
+  right: 0;
+}
+
+.modal__actions {
+  position: relative;
+  margin-top: 15px;
+}

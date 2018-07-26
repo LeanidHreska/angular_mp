@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { CoursesPageComponent } from './courses-page-component/courses-page.component';
 import { SearchSectionComponent } from './courses-page-component/search-section/search-section.component';
 import { CoursesListComponent } from './courses-page-component/courses-list/courses-list.component';
@@ -17,6 +17,7 @@ import { DurationPipe } from '../../pipes/duration.pipe';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
+    MatDialogModule,
     SharedModule
   ],
   declarations: [
@@ -30,6 +31,8 @@ import { DurationPipe } from '../../pipes/duration.pipe';
   ],
   exports: [
     CoursesPageComponent
+  ],
+  providers: [
   ]
 })
 export class CoursesPageModule { }
