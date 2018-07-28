@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { head, concat } from 'lodash';
-import { CoursesListItem } from '../../components/courses-page/courses-page-component/models/courses-list-item.model';
+import { CoursesListItem } from '../../modules/courses-page/courses-page-component/models/courses-list-item.model';
 
 @Injectable({
   providedIn: 'root'
