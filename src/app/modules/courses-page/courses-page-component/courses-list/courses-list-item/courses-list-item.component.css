@@ -1,4 +1,4 @@
-.courses-list__item {
+.item {
   margin: 10px;
   display: grid;
   grid-column-gap: 15px;
@@ -6,23 +6,23 @@
   font-family: 'Amatic+SC', cursive;
 }
 
-.courses-list__item-button {
+.item__button {
   margin: 5px 0;
   width: 100%;
 }
 
-.courses-list__item-info-area {
+.item__info-area {
   display: grid;
   grid-template-columns: 5fr 1fr 1fr;
   margin: 5px 0;
 }
 
-.courses-list__rate-icon {
+.item__rate-icon {
   color: #ffd740;
   transition: color ease-in-out .3s;
 }
 
-.courses-list__rate-icon:hover {
+.item__rate-icon:hover {
   cursor: pointer;
   color: #673ab7;
 }

@@ -1,0 +1,21 @@
+.add-course-form {
+  width: 80%;
+  margin: 100px auto;
+}
+
+.add-course-form * {
+  font-family: inherit;
+}
+
+.add-course-form__substrate {
+  width: 100%;
+}
+
+.add-course-form__input--fullWidth {
+  width: 100%;
+}
+
+.add-course-form__button-cancel {
+  margin-left: 15px;
+}
+

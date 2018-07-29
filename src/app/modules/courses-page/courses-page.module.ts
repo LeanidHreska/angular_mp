@@ -27,7 +27,6 @@ import { DurationPipe } from '../../pipes/duration.pipe';
     CoursesListItemComponent,
     SortByPipe,
     FilterByPipe,
-    DurationPipe,
   ],
   exports: [
     CoursesPageComponent

@@ -9,6 +9,9 @@ export class DurationPipe implements PipeTransform {
     const hours = Math.floor(value / 60);
     const minutes = value - hours * 60;
     const hoursTemplate = hours ? `${hours}h` : '';
+    if (!hours && !minutes) {
+      return '';
+    }
     return `${hoursTemplate} ${minutes}min`
   }
 

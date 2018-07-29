@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CoursesListItem } from '../models/courses-list-item.model';
+import { CoursesListItem } from 'src/app/models/course-item.model';
 import { FilterByPipe, Options } from '../../../../pipes/filter-by.pipe';
 
 @Component({
