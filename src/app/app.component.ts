@@ -9,7 +9,7 @@ import { AuthService } from './services/auth/auth.service';
 export class AppComponent {
   title = 'app';
 
-  constructor(private authService: AuthService) {
+  constructor(public authService: AuthService) {
     
   }
 }

@@ -8,6 +8,7 @@ import { UserModule } from './modules/user/user.module';
 import { CoursesPageModule } from './modules/courses-page/courses-page.module';
 import { LoginPageModule } from './modules/login-page/login-page.module';
 import { CoreModule } from './modules/core/core.module';
+import { AddCoursePageModule } from './modules/add-course-page/add-course-page.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CoreModule } from './modules/core/core.module';
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
+    AddCoursePageModule,
     CoursesPageModule,
     UserModule,
     LoginPageModule,

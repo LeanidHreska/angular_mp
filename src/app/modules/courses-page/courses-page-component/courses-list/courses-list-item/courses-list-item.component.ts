@@ -1,16 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
-import { CoursesListItem } from '../../models/courses-list-item.model';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { CoursesListItem } from 'src/app/models/course-item.model';
 import { MatDialog } from '@angular/material';
 import { ModalComponent } from '../../../../shared/modal/modal.component';
 
 @Component({
   selector: 'app-courses-list-item',
   templateUrl: './courses-list-item.component.html',
-  styleUrls: ['./courses-list-item.component.css']
+  styleUrls: ['./courses-list-item.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CoursesListItemComponent implements OnInit {
   
-  @Input() public coursesListItem: CoursesListItem;
+  @Input() public item: CoursesListItem;
+  @Input() public onConfirmDeleteTitle: string;
   @Output() deletedCourse = new EventEmitter<number>();
 
   constructor(public dialog: MatDialog) { }
@@ -38,13 +40,13 @@ export class CoursesListItemComponent implements OnInit {
       {
         width: '40%',
         data: {
-          title: 'Do you really want to delete this course?',
+          title: this.onConfirmDeleteTitle,
         }
       });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.onDelete(this.coursesListItem.id)
+        this.onDelete(this.item.id)
       }
     });
   }

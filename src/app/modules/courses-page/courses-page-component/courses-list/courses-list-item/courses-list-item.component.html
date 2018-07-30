@@ -1,35 +1,39 @@
 <mat-card
-  class="courses-list__item"
-  [ngStyle]="setCourseBorder(coursesListItem.creationDate)"
+  class="item"
+  [ngStyle]="setCourseBorder(item.creationDate)"
   >
   <div>
-    <div class="courses-list__item-info-area">
+    <div class="item__info-area">
       <span>
-        {{ coursesListItem.title | uppercase }}
+        {{ item.title | uppercase }}
         <i
-          class="fa fa-star courses-list__rate-icon"
-          *ngIf="coursesListItem.topRated"
+          class="fa fa-star item__rate-icon"
+          *ngIf="item.topRated"
         >
 
         </i>
       </span>
       <span>
-        {{ coursesListItem.duration | duration }}
+        {{ item.duration | duration }}
       </span>
       <span>
-        {{ coursesListItem.creationDate | date: 'dd.MM.yyyy'}}
+        {{ item.creationDate | date: 'dd.MM.yyyy'}}
       </span>
     </div>
     <span>
-      {{ coursesListItem.description }}
+      {{ item.description }}
     </span>
   </div>
   <div>
-    <button class="button__custom-font courses-list__item-button" mat-raised-button color="primary">
+    <button
+      class="button__custom-font item__button"
+      mat-raised-button
+      color="primary"
+    >
       Edit
     </button>
     <button
-      class="button__custom-font courses-list__item-button"
+      class="button__custom-font item__button"
       mat-raised-button
       color="primary"
       (click)="openDialogForDelete()"
