@@ -1,0 +1,44 @@
+<mat-card
+  class="item"
+  [ngStyle]="setCourseBorder(item.creationDate)"
+  >
+  <div>
+    <div class="item__info-area">
+      <span>
+        {{ item.title | uppercase }}
+        <i
+          class="fa fa-star item__rate-icon"
+          *ngIf="item.topRated"
+        >
+
+        </i>
+      </span>
+      <span>
+        {{ item.duration | duration }}
+      </span>
+      <span>
+        {{ item.creationDate | date: 'dd.MM.yyyy'}}
+      </span>
+    </div>
+    <span>
+      {{ item.description }}
+    </span>
+  </div>
+  <div>
+    <button
+      class="button__custom-font item__button"
+      mat-raised-button
+      color="primary"
+    >
+      Edit
+    </button>
+    <button
+      class="button__custom-font item__button"
+      mat-raised-button
+      color="primary"
+      (click)="openDialogForDelete()"
+    >
+      Delete
+    </button>
+  </div>
+</mat-card>

@@ -1,0 +1,22 @@
+<header class="header">
+  <app-logo></app-logo>
+  <span>
+    Angular Mentoring Program 2018
+  </span>
+  <section
+    class="header__authActions"
+    *ngIf="authService.isAuth()"
+  >
+    <span>
+      User login
+    </span>
+    <button
+      class="button__custom-font"
+      mat-raised-button
+      color="primary"
+      (click)="authService.logout()"
+    >
+      Log off
+    </button>
+  </section>
+</header>

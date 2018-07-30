@@ -1,0 +1,14 @@
+.login-form {
+  width: 35%;
+  margin: 100px auto 0;
+}
+
+.login-form__substrate {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.login-form__input {
+  width: 100%
+}
