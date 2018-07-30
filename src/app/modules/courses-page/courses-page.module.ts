@@ -8,7 +8,7 @@ import { CoursesListComponent } from './courses-page-component/courses-list/cour
 import { CoursesListItemComponent } from './courses-page-component/courses-list/courses-list-item/courses-list-item.component';
 import { SortByPipe } from '../../pipes/sort-by.pipe';
 import { FilterByPipe } from '../../pipes/filter-by.pipe';
-import { DurationPipe } from '../../pipes/duration.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -18,7 +18,8 @@ import { DurationPipe } from '../../pipes/duration.pipe';
     MatButtonModule,
     MatInputModule,
     MatDialogModule,
-    SharedModule
+    SharedModule,
+    RouterModule,
   ],
   declarations: [
     CoursesPageComponent,

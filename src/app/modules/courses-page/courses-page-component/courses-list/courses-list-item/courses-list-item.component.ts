@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { CoursesListItem } from 'src/app/models/course-item.model';
+import { CoursesListItem } from '../../../../../models/course-item.model';
 import { MatDialog } from '@angular/material';
 import { ModalComponent } from '../../../../shared/modal/modal.component';
 
@@ -13,6 +13,7 @@ export class CoursesListItemComponent implements OnInit {
   
   @Input() public item: CoursesListItem;
   @Input() public onConfirmDeleteTitle: string;
+  @Input() public onEditCourse: Function;
   @Output() deletedCourse = new EventEmitter<number>();
 
   constructor(public dialog: MatDialog) { }
@@ -20,9 +21,10 @@ export class CoursesListItemComponent implements OnInit {
   ngOnInit() {
   }
   
-  setCourseBorder(creationDate: number) {
-    const currentDate = Date.now();
-    if ((creationDate < currentDate) && (creationDate >= currentDate - (14 * 86400))) {
+  setCourseBorder(creationDate: Date) {
+    const currentDate: Date = new Date();
+    if ((creationDate < currentDate) &&
+      (creationDate.getTime() >= currentDate.getTime() - (14 * 86400))) {
       return { border: '2px solid #81e390'};
     }
 

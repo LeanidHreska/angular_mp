@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { head, concat } from 'lodash';
-import { CoursesListItem } from 'src/app/models/course-item.model';
+import { CoursesListItem } from '../../models/course-item.model';
+import { FormControl, MaxLengthValidator } from '@angular/forms'; 
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +10,14 @@ export class CoursesService {
   public coursesList: CoursesListItem[] = [{
     id: 2,
     title: 'Video course 2',
-    creationDate: 1535058512080,
+    creationDate: new Date(1535058512080),
     duration: 65,
     description: 'someDesc',
     topRated: false,
   }, {
     id: 1,
     title: 'Video course 1',
-    creationDate: 1530958348080,
+    creationDate: new Date(1530958348080),
     duration: 12,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur congue ornare. Nunc efficitur congue ornare Donec hendrerit frin',
     topRated: true,
@@ -46,5 +47,9 @@ export class CoursesService {
 
   removeItem(id: number) {
     this.coursesList = this.coursesList.filter(course => course.id !== id);
+  }
+
+  getIdForNewCourse(): number {
+    return this.coursesList.reduce((maxId, course) => (maxId < course.id ? course.id : maxId) , 1) + 1;
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CoursesListItem } from 'src/app/models/course-item.model';
+import { CoursesListItem } from '../../../../models/course-item.model';
 import { CoursesService } from '../../../../services/courses/courses.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses-list',
@@ -11,7 +12,9 @@ export class CoursesListComponent implements OnInit {
   
   @Input() public coursesList: CoursesListItem[];
   
-  constructor(private coursesService: CoursesService) { }
+  constructor(private coursesService: CoursesService, private router: Router) {
+    this.onEditCourse = this.onEditCourse.bind(this);
+  }
 
   ngOnInit() {
   }
@@ -19,5 +22,9 @@ export class CoursesListComponent implements OnInit {
   onDeleted(courseId: number) {
     this.coursesService.removeItem(courseId);
     console.log(this.coursesService.getList())
+  }
+
+  onEditCourse(courseId: number) {
+    this.router.navigate(['courses', courseId, 'edit']);
   }
 }

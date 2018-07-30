@@ -1,3 +1,4 @@
+<app-breadcrumbs [title]="courseItem.title"></app-breadcrumbs>
 <form class="add-course-form">
   <mat-card
     class="add-course-form__substrate"
@@ -35,7 +36,7 @@
         matInput
         [matDatepicker]="courseDatePicker"
         placeholder="Date"
-        [(ngModel)]="courseItem.creationDate"
+        [value]="courseItem.creationDate"
       >
       <mat-datepicker-toggle
         matSuffix
@@ -73,6 +74,7 @@
     <button
       mat-raised-button
       color="primary"
+      (click)="onSave()"
     >
       Save
     </button>
@@ -80,6 +82,7 @@
       mat-raised-button
       color="warn"
       class="add-course-form__button-cancel"
+      (click)="navigationRouter.navigate(['courses'])"
     >
       Cancel
     </button>
