@@ -4,6 +4,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatFormFieldModule, MatButtonModule, MatInputModule, MatCardModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { RouterModule } from '@angular/router';
     MatInputModule,
     MatCardModule,
     RouterModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     LoginPageComponent

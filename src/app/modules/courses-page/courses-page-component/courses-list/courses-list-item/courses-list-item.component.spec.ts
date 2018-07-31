@@ -1,9 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule, MatDialog } from '@angular/material';
+import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule, MatDialog, MatDialogModule } from '@angular/material';
 import { CoursesListItemComponent } from './courses-list-item.component';
 import { By } from '@angular/platform-browser';
 import { CoursesListItem } from '../../../../../models/course-item.model';
+import { SharedModule } from '../../../../shared/shared.module';
 
 describe('CoursesListItemComponent', () => {
   describe('=> Stand alone', () => {
@@ -17,6 +18,8 @@ describe('CoursesListItemComponent', () => {
         ],
         imports: [
           MatCardModule,
+          SharedModule,
+          MatDialogModule
         ]
       })
       .compileComponents();

@@ -3,10 +3,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CoursesPageComponent } from './courses-page.component';
 import { SearchSectionComponent } from './search-section/search-section.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
-import { LoadMoreComponent } from '../../shared/load-more/load-more.component';
-import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { CoursesListItemComponent } from './courses-list/courses-list-item/courses-list-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from '../../shared/shared.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('CoursesPageComponent', () => {
   let component: CoursesPageComponent;
@@ -19,14 +20,16 @@ describe('CoursesPageComponent', () => {
         SearchSectionComponent,
         CoursesListComponent,
         CoursesListItemComponent,
-        LoadMoreComponent,
       ],
       imports: [
         MatFormFieldModule,
         MatCardModule,
         MatButtonModule,
         MatInputModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        SharedModule,
+        RouterTestingModule,
+        MatDialogModule
       ],
     })
     .compileComponents();

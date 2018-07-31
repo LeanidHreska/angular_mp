@@ -7,6 +7,7 @@ import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule } fr
 
 import { SearchSectionComponent } from './search-section.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('SearchSectionComponent', () => {
   let component: SearchSectionComponent;
@@ -23,6 +24,7 @@ describe('SearchSectionComponent', () => {
         MatInputModule,
         SharedModule,
         BrowserAnimationsModule,
+        RouterTestingModule,
       ]
     })
     .compileComponents();
