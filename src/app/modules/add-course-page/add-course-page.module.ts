@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddCoursePageComponent } from './add-course-page/add-course-page.component';
-import { MatCardModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import {
+  MatCardModule,
+  MatFormFieldModule,
+  MatButtonModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule
+} from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';

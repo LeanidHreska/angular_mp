@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { head, concat } from 'lodash';
 import { CoursesListItem } from '../../models/course-item.model';
-import { FormControl, MaxLengthValidator } from '@angular/forms'; 
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +18,7 @@ export class CoursesService {
     title: 'Video course 1',
     creationDate: new Date(1530958348080),
     duration: 12,
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur congue ornare. Nunc efficitur congue ornare Donec hendrerit frin',
+    description: 'Lorem ipsum dolor sit, consectetur. Nunc efficitur congue ornare. Nunc efficitur congue ornare Donec hendrerit frin',
     topRated: true,
   }];
 
@@ -41,8 +40,8 @@ export class CoursesService {
     this.coursesList = this.coursesList.map(course => {
       return course.id === updatedCourse.id
         ? updatedCourse
-        : course
-    })
+        : course;
+    });
   }
 
   removeItem(id: number) {

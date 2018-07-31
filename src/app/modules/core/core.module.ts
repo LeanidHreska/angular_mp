@@ -11,14 +11,16 @@ import { ModuleWithProviders } from '@angular/compiler/src/core';
   declarations: [],
   providers: []
 })
-export class CoreModule { 
+
+export class CoreModule {
+
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: CoreModule,
       providers: [
         CoursesService,
-        AuthService
+        AuthService,
       ]
-    }
+    };
   }
 }

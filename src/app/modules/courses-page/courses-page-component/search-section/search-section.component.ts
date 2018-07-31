@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./search-section.component.css']
 })
 export class SearchSectionComponent implements OnInit {
-  
+
   @Input() public coursesList: CoursesListItem[];
   @Output() filteredCourses = new EventEmitter<Object[]>();
 
-  public value: string = '';
+  public value = '';
 
   constructor(public router: Router) {
   }

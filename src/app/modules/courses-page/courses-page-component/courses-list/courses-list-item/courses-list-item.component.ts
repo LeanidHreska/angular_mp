@@ -10,7 +10,7 @@ import { ModalComponent } from '../../../../shared/modal/modal.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CoursesListItemComponent implements OnInit {
-  
+
   @Input() public item: CoursesListItem;
   @Input() public onConfirmDeleteTitle: string;
   @Input() public onEditCourse: Function;
@@ -20,7 +20,7 @@ export class CoursesListItemComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   setCourseBorder(creationDate: Date) {
     const currentDate: Date = new Date();
     if ((creationDate < currentDate) &&
@@ -48,7 +48,7 @@ export class CoursesListItemComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.onDelete(this.item.id)
+        this.onDelete(this.item.id);
       }
     });
   }

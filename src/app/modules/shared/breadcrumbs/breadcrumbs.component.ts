@@ -11,7 +11,4 @@ export class BreadcrumbsComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  
-
 }

@@ -14,10 +14,9 @@ export class AddCoursePageComponent implements OnInit {
     private coursesService: CoursesService,
     private router: ActivatedRoute,
     public navigationRouter: Router,
-  ) { 
-    
+  ) {
   }
-  
+
   public courseItem: CoursesListItem = {
     id: 3,
     title: '',
@@ -30,16 +29,16 @@ export class AddCoursePageComponent implements OnInit {
     id?: number,
   } = { };
 
-  isEditing: boolean = false;
+  isEditing = false;
 
 
   ngOnInit() {
     this.router.params.subscribe((data) => {
       if (!isEmpty(data)) {
         this.routerParams.id = data.id;
-        this.courseItem = this.coursesService.getItemById(parseInt(data.id));
+        this.courseItem = this.coursesService.getItemById(parseInt(data.id, 10));
         this.isEditing = true;
-      } 
+      }
     });
 
     if (!this.isEditing) {
@@ -48,7 +47,6 @@ export class AddCoursePageComponent implements OnInit {
   }
 
   onSave() {
-    console.log(this.courseItem)
     this.isEditing
       ? this.coursesService.updateItem(this.courseItem)
       : this.coursesService.createCourse(this.courseItem);

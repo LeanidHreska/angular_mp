@@ -20,7 +20,7 @@ describe('CoursesPageComponent', () => {
         CoursesListComponent,
         CoursesListItemComponent,
         LoadMoreComponent,
-      ], 
+      ],
       imports: [
         MatFormFieldModule,
         MatCardModule,

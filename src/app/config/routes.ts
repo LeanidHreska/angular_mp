@@ -13,14 +13,13 @@ export const ROUTES: Routes = [
     component: CoursesPageComponent,
     canActivate: [AuthGuard]
   },
-  
-  { 
+  {
     path: 'courses/:id/edit',
     component: AddCoursePageComponent,
     canActivate: [AuthGuard]
   },
 
-  { 
+  {
     path: 'courses/new',
     component: AddCoursePageComponent,
     canActivate: [AuthGuard]

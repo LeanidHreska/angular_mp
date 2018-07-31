@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./courses-list.component.css']
 })
 export class CoursesListComponent implements OnInit {
-  
+
   @Input() public coursesList: CoursesListItem[];
-  
+
   constructor(private coursesService: CoursesService, private router: Router) {
     this.onEditCourse = this.onEditCourse.bind(this);
   }
@@ -21,7 +21,6 @@ export class CoursesListComponent implements OnInit {
 
   onDeleted(courseId: number) {
     this.coursesService.removeItem(courseId);
-    console.log(this.coursesService.getList())
   }
 
   onEditCourse(courseId: number) {

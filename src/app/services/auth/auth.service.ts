@@ -9,7 +9,6 @@ export class AuthService {
 
   login(userData: UserEntity) {
     localStorage.setItem('userInfo', JSON.stringify(userData));
-    console.log(userData)
   }
 
   logout() {
