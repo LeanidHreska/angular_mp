@@ -52,19 +52,19 @@ describe('CoursesListItemComponent', () => {
     });
   });
 
-  // describe('=> Class', () => {
-  //   it('should emit deletedCourse event correctly', () => {
-  //     const component = new CoursesListItemComponent(MatDialog);
-  //     const coursesListItem: CoursesListItem = {
-  //       id: 1,
-  //       title: 'new Title',
-  //       description: 'desc',
-  //       duration: 30,
-  //       creationDate: new Date()
-  //     }
+  describe('=> Class', () => {
+    it('should emit deletedCourse event correctly', () => {
+      const component = new CoursesListItemComponent();
+      const coursesListItem: CoursesListItem = {
+        id: 1,
+        title: 'new Title',
+        description: 'desc',
+        duration: 30,
+        creationDate: new Date()
+      }
 
-  //     component.deletedCourse.subscribe(deletedCourse => expect(deletedCourse).toEqual(1))
-  //     component.onDelete(1);
-  //   });
-  // });
+      component.deletedCourse.subscribe(deletedCourse => expect(deletedCourse).toEqual(1))
+      component.onDelete(1);
+    });
+  });
 });

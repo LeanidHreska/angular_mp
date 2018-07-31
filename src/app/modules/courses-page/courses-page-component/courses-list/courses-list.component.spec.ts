@@ -5,7 +5,6 @@ import { SharedModule } from '../../../shared/shared.module';
 import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule } from '@angular/material';
 
 import { CoursesListComponent } from './courses-list.component';
-import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CoursesListItemComponent } from './courses-list-item/courses-list-item.component';
 
@@ -41,9 +40,4 @@ describe('CoursesListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  // it('should have 2 items with .courses-list__item class', () => {
-  //   const coursesList = fixture.debugElement.queryAll(By.css('.courses-list__item'));
-
-  //   expect(coursesList.length).toEqual(2);
-  // });
 });
