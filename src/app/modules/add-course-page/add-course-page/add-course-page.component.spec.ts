@@ -44,7 +44,7 @@ describe('AddCoursePageComponent', () => {
       creationDate: new Date(),
       duration: 43,
     };
-  
+
     fixture.detectChanges();
   });
 

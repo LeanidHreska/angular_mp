@@ -19,9 +19,9 @@ export class AddCoursePageComponent implements OnInit {
 
   public courseItem: CoursesListItem = {
     id: 3,
-    title: '',
-    creationDate: new Date(),
-    duration: 0,
+    name: '',
+    date: new Date(),
+    length: 0,
     description: '',
   };
 

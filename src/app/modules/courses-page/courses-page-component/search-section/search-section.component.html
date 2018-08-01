@@ -2,9 +2,13 @@
   <form>
     <mat-form-field
       class="search-section__input"
-      (change)="onFind($event)"
     >
-      <input matInput placeholder="Name, fragment or date">
+      <input
+        matInput
+        placeholder="Name, fragment or date"
+        [(ngModel)]="value"
+        name="search-value"
+      >
     </mat-form-field>
   </form>
   <button

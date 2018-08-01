@@ -9,15 +9,62 @@ import { CoursesService } from '../../../services/courses/courses.service';
 export class CoursesPageComponent implements OnInit {
 
   public coursesList: CoursesListItem[] = [];
+  public paging = {
+    start: 0,
+    count: 5,
+  };
 
-  constructor(private coursesService: CoursesService) { }
+  constructor(private coursesService: CoursesService) {
+    this.getItemsByQuery = this.getItemsByQuery.bind(this);
+    this.getItemsByFragment = this.getItemsByFragment.bind(this);
+  }
 
   ngOnInit() {
-    this.coursesList = this.coursesService.getList();
+    this.getItemsByQuery();
   }
 
-  onFilter(coursesList: CoursesListItem[]) {
-    this.coursesList = coursesList;
+  getItemsByQuery(isLoadNextPage?: boolean) {
+    if (isLoadNextPage) {
+      this.paging.start++;
+    }
+    this.getItems(`start=${this.paging.start}&count=${this.paging.count}`);
   }
 
+  getItemsByFragment(text: string) {
+    if (text) {
+      this.getItems(`textFragment=${text}`);
+    } else {
+      this.getItemsByQuery();
+    }
+  }
+
+  getItems(query: string) {
+    this.coursesService.getList(query)
+      .subscribe((data: CoursesListItem[]) => {
+        this.coursesList = data;
+      });
+  }
+
+
+  // onSearch(textFragment: string): void {
+  //   if (textFragment) {
+  //     this.loadItems(`textFragment=${textFragment}`);
+  //   } else {
+  //     this.loadMoreItems();
+  //   }
+  // }
+
+  // loadMoreItems(isLoadNextPage?: boolean) {
+  //   if (isLoadNextPage) {
+  //     this.paging.start++;
+  //   }
+  //   this.loadItems(`start=${this.paging.start}&count=${this.paging.count}`);
+  // }
+
+  // loadItems(query): void {
+  //   this.coursesService.getList(query)
+  //     .subscribe((data: CoursesListItem[]) => {
+  //       this.coursesList = data;
+  //     });
+  // }
 }

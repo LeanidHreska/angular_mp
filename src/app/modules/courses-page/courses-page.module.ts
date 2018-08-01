@@ -9,6 +9,7 @@ import { CoursesListItemComponent } from './courses-page-component/courses-list/
 import { SortByPipe } from '../../pipes/sort-by.pipe';
 import { FilterByPipe } from '../../pipes/filter-by.pipe';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -20,6 +21,8 @@ import { RouterModule } from '@angular/router';
     MatDialogModule,
     SharedModule,
     RouterModule,
+    FormsModule,
+    MatInputModule,
   ],
   declarations: [
     CoursesPageComponent,

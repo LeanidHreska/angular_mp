@@ -1,10 +1,12 @@
 <app-search-section
-  [coursesList]="coursesList"
-  (filteredCourses)="onFilter($event)"
+  [onSearch]="getItemsByFragment"
 >
 </app-search-section>
 <app-courses-list
   [coursesList]="coursesList"
 >
 </app-courses-list>
-<app-load-more></app-load-more>
+<app-load-more
+  [loadItems]="getItemsByQuery"
+>
+</app-load-more>

@@ -12,6 +12,7 @@ import { AddCoursePageModule } from './modules/add-course-page/add-course-page.m
 import { RouterModule } from '@angular/router';
 
 import { ROUTES } from './config/routes';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ROUTES } from './config/routes';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
     AddCoursePageModule,

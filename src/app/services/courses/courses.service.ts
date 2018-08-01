@@ -1,31 +1,19 @@
 import { Injectable } from '@angular/core';
 import { head, concat } from 'lodash';
 import { CoursesListItem } from '../../models/course-item.model';
+import { HttpClient } from '@angular/common/http';
+import { serverUrl } from '../../config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
-  public coursesList: CoursesListItem[] = [{
-    id: 2,
-    title: 'Video course 2',
-    creationDate: new Date(1535058512080),
-    duration: 65,
-    description: 'someDesc',
-    topRated: false,
-  }, {
-    id: 1,
-    title: 'Video course 1',
-    creationDate: new Date(1530958348080),
-    duration: 12,
-    description: 'Lorem ipsum dolor sit, consectetur. Nunc efficitur congue ornare. Nunc efficitur congue ornare Donec hendrerit frin',
-    topRated: true,
-  }];
+  public coursesList: CoursesListItem[] = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getList() {
-    return this.coursesList;
+  getList(query: string) {
+    return this.http.get<CoursesListItem[]>(`${serverUrl}/courses?${query}`);
   }
 
   getItemById(id: number) {

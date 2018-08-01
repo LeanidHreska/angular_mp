@@ -5,19 +5,19 @@
   <div>
     <div class="item__info-area">
       <span>
-        {{ item.title | uppercase }}
+        {{ item.name | uppercase }}
         <i
           class="fa fa-star item__rate-icon"
-          *ngIf="item.topRated"
+          *ngIf="item.isTopRated"
         >
 
         </i>
       </span>
       <span>
-        {{ item.duration | duration }}
+        {{ item.length | duration }}
       </span>
       <span>
-        {{ item.creationDate | date: 'dd.MM.yyyy'}}
+        {{ item.date | date: 'dd.MM.yyyy'}}
       </span>
     </div>
     <span>
