@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { head, concat } from 'lodash';
+import { noop } from 'lodash';
 import { CoursesListItem } from '../../models/course-item.model';
 import { HttpClient } from '@angular/common/http';
 import { serverUrl } from '../../config/config';
+import { Observable } from 'rxjs';
+import { HttpResponse } from 'selenium-webdriver/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +14,17 @@ export class CoursesService {
 
   constructor(private http: HttpClient) { }
 
-  getList(query: string) {
+  getList(query: string): Observable<CoursesListItem[]> {
     return this.http.get<CoursesListItem[]>(`${serverUrl}/courses?${query}`);
   }
 
-  getItemById(id: number) {
-    return head(this.coursesList.filter(course => course.id === id));
+  getItemById(id: number): Observable<CoursesListItem> {
+    return this.http.get<CoursesListItem>(`${serverUrl}/courses/${id}`);
   }
 
   createCourse(course: CoursesListItem) {
-    this.coursesList = concat(this.coursesList, course);
+    return this.http.post(`${serverUrl}/courses`, course)
+      .subscribe(noop, error => console.log(error));
   }
 
   updateItem(updatedCourse: CoursesListItem) {
@@ -32,11 +35,7 @@ export class CoursesService {
     });
   }
 
-  removeItem(id: number) {
-    this.coursesList = this.coursesList.filter(course => course.id !== id);
-  }
-
-  getIdForNewCourse(): number {
-    return this.coursesList.reduce((maxId, course) => (maxId < course.id ? course.id : maxId) , 1) + 1;
+  removeItem(id: number): Observable<HttpResponse> {
+    return this.http.delete(`${serverUrl}/courses/${id}`);
   }
 }

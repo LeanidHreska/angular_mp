@@ -24,6 +24,6 @@ module.exports = (server) => {
 		
 		res.json(courses);
 	});
-	
+
 	return router;
 };

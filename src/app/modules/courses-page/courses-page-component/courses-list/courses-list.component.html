@@ -1,6 +1,6 @@
 <div>
   <app-courses-list-item
-    *ngFor="let item of coursesList | sortBy: ['creationDate']"
+    *ngFor="let item of coursesList | sortBy: ['date']"
     [item]="item"
     (deletedCourse)="onDeleted($event)"
     [onConfirmDeleteTitle]="'Do you really want to delete this course?'"

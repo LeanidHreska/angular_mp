@@ -44,27 +44,4 @@ export class CoursesPageComponent implements OnInit {
         this.coursesList = data;
       });
   }
-
-
-  // onSearch(textFragment: string): void {
-  //   if (textFragment) {
-  //     this.loadItems(`textFragment=${textFragment}`);
-  //   } else {
-  //     this.loadMoreItems();
-  //   }
-  // }
-
-  // loadMoreItems(isLoadNextPage?: boolean) {
-  //   if (isLoadNextPage) {
-  //     this.paging.start++;
-  //   }
-  //   this.loadItems(`start=${this.paging.start}&count=${this.paging.count}`);
-  // }
-
-  // loadItems(query): void {
-  //   this.coursesService.getList(query)
-  //     .subscribe((data: CoursesListItem[]) => {
-  //       this.coursesList = data;
-  //     });
-  // }
 }

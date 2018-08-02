@@ -7,6 +7,8 @@ import { LoadMoreComponent } from '../../shared/load-more/load-more.component';
 import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule } from '@angular/material';
 import { CoursesListItemComponent } from './courses-list/courses-list-item/courses-list-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
 
 describe('CoursesPageComponent', () => {
   let component: CoursesPageComponent;
@@ -19,14 +21,15 @@ describe('CoursesPageComponent', () => {
         SearchSectionComponent,
         CoursesListComponent,
         CoursesListItemComponent,
-        LoadMoreComponent,
       ],
       imports: [
         MatFormFieldModule,
         MatCardModule,
         MatButtonModule,
         MatInputModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        FormsModule,
+        SharedModule,
       ],
     })
     .compileComponents();

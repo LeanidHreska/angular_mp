@@ -4,9 +4,10 @@ import { AddCoursePageComponent } from './add-course-page.component';
 import { MatFormFieldModule, MatDatepickerModule, MatCardModule, MatNativeDateModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
-import { RouterModule, ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import RouterStub from '../../../testing/router-stub';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from 'selenium-webdriver/http';
 
 describe('AddCoursePageComponent', () => {
   let component: AddCoursePageComponent;
@@ -24,10 +25,12 @@ describe('AddCoursePageComponent', () => {
         MatCardModule,
         SharedModule,
         RouterTestingModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        HttpClientModule
       ],
       providers: [
-        {provide: ActivatedRoute, useClass: RouterStub},
+        HttpClient,
+        {provide: ActivatedRoute, useClass: RouterTestingModule},
         {provide: Router, useClass: RouterTestingModule}
       ]
     })
@@ -39,10 +42,10 @@ describe('AddCoursePageComponent', () => {
     component = fixture.componentInstance;
     component.courseItem = {
       id: 1,
-      title: 'some title',
+      name: 'some title',
       description: 'desc',
-      creationDate: new Date(),
-      duration: 43,
+      date: new Date(),
+      length: 43,
     };
 
     fixture.detectChanges();

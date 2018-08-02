@@ -6,8 +6,8 @@ import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule } fr
 
 import { CoursesListItemComponent } from './courses-list-item/courses-list-item.component';
 import { CoursesListComponent } from './courses-list.component';
-import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 describe('CoursesListComponent', () => {
   let component: CoursesListComponent;
@@ -25,7 +25,9 @@ describe('CoursesListComponent', () => {
         MatCardModule,
         MatButtonModule,
         MatInputModule,
-        SharedModule
+        SharedModule,
+        MatInputModule,
+        FormsModule,
       ],
     })
     .compileComponents();

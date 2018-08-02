@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 
 import { ROUTES } from './config/routes';
 import { HttpClientModule } from '@angular/common/http';
+import { httpInterceptorProviders } from './http-interceptors';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,9 @@ import { HttpClientModule } from '@angular/common/http';
     LoginPageModule,
     CoreModule.forRoot(),
     RouterModule.forRoot(ROUTES, { useHash: true }),
+  ],
+  providers: [
+    httpInterceptorProviders,
   ],
   bootstrap: [AppComponent]
 })
