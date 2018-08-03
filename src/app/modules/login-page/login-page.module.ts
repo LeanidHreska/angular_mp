@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatFormFieldModule, MatButtonModule, MatInputModule, MatCardModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -12,6 +14,8 @@ import { MatFormFieldModule, MatButtonModule, MatInputModule, MatCardModule } fr
     MatButtonModule,
     MatInputModule,
     MatCardModule,
+    RouterModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     LoginPageComponent

@@ -12,7 +12,7 @@ export class DurationPipe implements PipeTransform {
     if (!hours && !minutes) {
       return '';
     }
-    return `${hoursTemplate} ${minutes}min`
+    return `${hoursTemplate} ${minutes}min`;
   }
 
 }

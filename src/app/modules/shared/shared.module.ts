@@ -7,12 +7,18 @@ import { LogoComponent } from './logo/logo.component';
 import { LoadMoreComponent } from './load-more/load-more.component';
 import { ModalComponent } from './modal/modal.component';
 import { DurationPipe } from '../../pipes/duration.pipe';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RouterModule } from '@angular/router';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { SortByPipe } from '../../pipes/sort-by.pipe';
+import { FilterByPipe } from '../../pipes/filter-by.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    RouterModule,
   ],
   declarations: [
     HeaderComponent,
@@ -21,12 +27,19 @@ import { DurationPipe } from '../../pipes/duration.pipe';
     LoadMoreComponent,
     ModalComponent,
     DurationPipe,
+    SortByPipe,
+    FilterByPipe,
+    NotFoundComponent,
+    BreadcrumbsComponent,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     LoadMoreComponent,
-    DurationPipe
+    BreadcrumbsComponent,
+    DurationPipe,
+    SortByPipe,
+    FilterByPipe,
   ],
   entryComponents: [ModalComponent],
 })

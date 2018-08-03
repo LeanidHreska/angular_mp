@@ -16,7 +16,7 @@ export class ModalComponent implements OnInit {
   ) {
     this.title = data.title;
   }
-  
+
   ngOnInit() {
   }
 
@@ -27,5 +27,4 @@ export class ModalComponent implements OnInit {
   onConfirmClick(): void {
     this.dialogRef.close(true);
   }
-
 }

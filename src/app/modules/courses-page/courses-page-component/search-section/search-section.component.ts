@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CoursesListItem } from 'src/app/models/course-item.model';
+import { CoursesListItem } from '../../../../models/course-item.model';
 import { FilterByPipe, Options } from '../../../../pipes/filter-by.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-section',
@@ -8,13 +9,14 @@ import { FilterByPipe, Options } from '../../../../pipes/filter-by.pipe';
   styleUrls: ['./search-section.component.css']
 })
 export class SearchSectionComponent implements OnInit {
-  
+
   @Input() public coursesList: CoursesListItem[];
   @Output() filteredCourses = new EventEmitter<Object[]>();
 
-  public value: string = '';
+  public value = '';
 
-  constructor() { }
+  constructor(public router: Router) {
+  }
 
   ngOnInit() {
   }
@@ -31,5 +33,9 @@ export class SearchSectionComponent implements OnInit {
 
     const filteredCourses = new FilterByPipe().transform(this.coursesList, options);
     this.filteredCourses.emit(filteredCourses);
+  }
+
+  handleAddCourse() {
+    this.router.navigate(['courses', 'new']);
   }
 }
