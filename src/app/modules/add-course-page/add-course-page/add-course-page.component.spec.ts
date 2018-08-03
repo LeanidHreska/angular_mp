@@ -32,7 +32,6 @@ describe('AddCoursePageComponent', () => {
       ],
       providers: [
         { provide: ActivatedRoute, useValue: {} },
-        { provide: Router, useClass: RouterTestingModule}
       ],
     })
     .compileComponents();

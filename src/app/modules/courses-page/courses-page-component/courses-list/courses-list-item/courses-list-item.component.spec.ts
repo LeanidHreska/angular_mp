@@ -5,6 +5,7 @@ import { CoursesListItemComponent } from './courses-list-item.component';
 import { By } from '@angular/platform-browser';
 import { CoursesListItem } from '../../../../../models/course-item.model';
 import { SharedModule } from '../../../../shared/shared.module';
+import { coursesList } from '../../../../../mocks/coursesList';
 
 describe('CoursesListItemComponent', () => {
   describe('=> Stand alone', () => {
@@ -55,13 +56,7 @@ describe('CoursesListItemComponent', () => {
   describe('=> Class', () => {
     it('should emit deletedCourse event correctly', () => {
       const component = new CoursesListItemComponent();
-      const coursesListItem: CoursesListItem = {
-        id: 1,
-        title: 'new Title',
-        description: 'desc',
-        duration: 30,
-        creationDate: new Date()
-      }
+      const coursesListItem: CoursesListItem = coursesList[0];
 
       component.deletedCourse.subscribe(deletedCourse => expect(deletedCourse).toEqual(1))
       component.onDelete(1);
