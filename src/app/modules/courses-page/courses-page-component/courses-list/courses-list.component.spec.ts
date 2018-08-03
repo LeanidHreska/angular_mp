@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../../shared/shared.module';
 import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule } from '@angular/material';
 
-import { CoursesListItemComponent } from './courses-list-item/courses-list-item.component';
 import { CoursesListComponent } from './courses-list.component';
-import { By } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CoursesListItemComponent } from './courses-list-item/courses-list-item.component';
 
 describe('CoursesListComponent', () => {
   let component: CoursesListComponent;
@@ -26,8 +26,8 @@ describe('CoursesListComponent', () => {
         MatButtonModule,
         MatInputModule,
         SharedModule,
-        MatInputModule,
-        FormsModule,
+        RouterTestingModule,
+        HttpClientTestingModule
       ],
     })
     .compileComponents();
@@ -37,15 +37,9 @@ describe('CoursesListComponent', () => {
     fixture = TestBed.createComponent(CoursesListComponent);
     component = fixture.componentInstance;
 
-    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-  it('should have 2 items with .courses-list__item class', () => {
-    const coursesList = fixture.debugElement.queryAll(By.css('.courses-list__item'));
-
-    expect(coursesList.length).toEqual(2);
   });
 });

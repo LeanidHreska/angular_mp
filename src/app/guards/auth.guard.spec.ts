@@ -15,8 +15,9 @@ describe('AuthGuard', () => {
         {provide: Router, useClass: RouterTestingModule }
       ],
       imports: [
-        HttpClientModule
-      ]
+        HttpClientModule,
+        RouterTestingModule
+      ],
     });
 
   });

@@ -3,12 +3,13 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CoursesPageComponent } from './courses-page.component';
 import { SearchSectionComponent } from './search-section/search-section.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
-import { LoadMoreComponent } from '../../shared/load-more/load-more.component';
-import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { CoursesListItemComponent } from './courses-list/courses-list-item/courses-list-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CoursesPageComponent', () => {
   let component: CoursesPageComponent;
@@ -28,8 +29,11 @@ describe('CoursesPageComponent', () => {
         MatButtonModule,
         MatInputModule,
         BrowserAnimationsModule,
-        FormsModule,
         SharedModule,
+        RouterTestingModule,
+        MatDialogModule,
+        FormsModule,
+        HttpClientTestingModule
       ],
     })
     .compileComponents();

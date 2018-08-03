@@ -11,6 +11,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SortByPipe } from '../../pipes/sort-by.pipe';
+import { FilterByPipe } from '../../pipes/filter-by.pipe';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { SortByPipe } from '../../pipes/sort-by.pipe';
     ModalComponent,
     DurationPipe,
     SortByPipe,
+    FilterByPipe,
     NotFoundComponent,
     BreadcrumbsComponent,
   ],
@@ -36,7 +38,8 @@ import { SortByPipe } from '../../pipes/sort-by.pipe';
     LoadMoreComponent,
     BreadcrumbsComponent,
     DurationPipe,
-    SortByPipe
+    SortByPipe,
+    FilterByPipe,
   ],
   entryComponents: [ModalComponent],
 })

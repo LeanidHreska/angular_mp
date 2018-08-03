@@ -16,7 +16,7 @@ export class CoursesListItemComponent implements OnInit {
   @Input() public onEditCourse: Function;
   @Output() deletedCourse = new EventEmitter<number>();
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog?: MatDialog) { }
 
   ngOnInit() {
   }

@@ -31,7 +31,5 @@ import { FormsModule } from '@angular/forms';
   exports: [
     CoursesPageComponent
   ],
-  providers: [
-  ]
 })
 export class CoursesPageModule { }

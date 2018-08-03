@@ -1,13 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddCoursePageComponent } from './add-course-page.component';
-import { MatFormFieldModule, MatDatepickerModule, MatCardModule, MatNativeDateModule } from '@angular/material';
+import { MatFormFieldModule, MatDatepickerModule, MatCardModule, MatNativeDateModule, MatInputModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClient } from 'selenium-webdriver/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AddCoursePageComponent', () => {
   let component: AddCoursePageComponent;
@@ -24,15 +24,16 @@ describe('AddCoursePageComponent', () => {
         MatDatepickerModule,
         MatCardModule,
         SharedModule,
+        MatNativeDateModule,
+        MatInputModule,
         RouterTestingModule,
         MatNativeDateModule,
         HttpClientModule
       ],
       providers: [
-        HttpClient,
-        {provide: ActivatedRoute, useClass: RouterTestingModule},
-        {provide: Router, useClass: RouterTestingModule}
-      ]
+        { provide: ActivatedRoute, useValue: {} },
+        { provide: Router, useClass: RouterTestingModule}
+      ],
     })
     .compileComponents();
   }));
@@ -48,7 +49,6 @@ describe('AddCoursePageComponent', () => {
       length: 43,
     };
 
-    fixture.detectChanges();
   });
 
   it('should create', () => {
