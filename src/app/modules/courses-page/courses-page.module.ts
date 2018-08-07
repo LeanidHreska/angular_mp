@@ -7,6 +7,7 @@ import { SearchSectionComponent } from './courses-page-component/search-section/
 import { CoursesListComponent } from './courses-page-component/courses-list/courses-list.component';
 import { CoursesListItemComponent } from './courses-page-component/courses-list/courses-list-item/courses-list-item.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -18,6 +19,8 @@ import { RouterModule } from '@angular/router';
     MatDialogModule,
     SharedModule,
     RouterModule,
+    FormsModule,
+    MatInputModule,
   ],
   declarations: [
     CoursesPageComponent,

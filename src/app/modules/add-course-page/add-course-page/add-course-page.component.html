@@ -1,4 +1,4 @@
-<app-breadcrumbs [title]="courseItem.title"></app-breadcrumbs>
+<app-breadcrumbs [title]="courseItem.name"></app-breadcrumbs>
 <form class="add-course-form">
   <mat-card
     class="add-course-form__substrate"
@@ -11,9 +11,9 @@
       </mat-label>
       <input
         matInput
-        name="title"
+        name="name"
         placeholder="Title"
-        [(ngModel)]="courseItem.title"
+        [(ngModel)]="courseItem.name"
       >
     </mat-form-field>
     <mat-form-field
@@ -36,7 +36,7 @@
         matInput
         [matDatepicker]="courseDatePicker"
         placeholder="Date"
-        [value]="courseItem.creationDate"
+        [value]="courseItem.date"
       >
       <mat-datepicker-toggle
         matSuffix
@@ -54,11 +54,11 @@
         name="duration"
         matInput
         placeholder="Duration"
-        [(ngModel)]="courseItem.duration"
+        [(ngModel)]="courseItem.length"
       >
     </mat-form-field>
     <span>
-      {{ courseItem.duration | duration }}
+      {{ courseItem.length | duration }}
     </span>
     <mat-form-field
       class="add-course-form__input--fullWidth"

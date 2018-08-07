@@ -11,12 +11,16 @@ import { LoginPageModule } from './modules/login-page/login-page.module';
 import { CoreModule } from './modules/core/core.module';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './config/routes';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
+      ],
+      providers: [
+        HttpClient
       ],
       imports: [
         BrowserModule,
@@ -28,6 +32,7 @@ describe('AppComponent', () => {
         LoginPageModule,
         CoreModule.forRoot(),
         RouterModule.forRoot(ROUTES, { useHash: true }),
+        HttpClientModule,
       ],
     }).compileComponents();
   }));

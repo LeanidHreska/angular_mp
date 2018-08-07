@@ -4,7 +4,8 @@ import { AddCoursePageComponent } from './add-course-page.component';
 import { MatFormFieldModule, MatDatepickerModule, MatCardModule, MatNativeDateModule, MatInputModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
-import { ActivatedRoute } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -26,11 +27,12 @@ describe('AddCoursePageComponent', () => {
         MatNativeDateModule,
         MatInputModule,
         RouterTestingModule,
-        BrowserAnimationsModule,
+        MatNativeDateModule,
+        HttpClientModule
       ],
       providers: [
-        { provide: ActivatedRoute, useValue: {} }
-      ]
+        { provide: ActivatedRoute, useValue: {} },
+      ],
     })
     .compileComponents();
   }));
@@ -40,12 +42,12 @@ describe('AddCoursePageComponent', () => {
     component = fixture.componentInstance;
     component.courseItem = {
       id: 1,
-      title: 'some title',
+      name: 'some title',
       description: 'desc',
-      creationDate: new Date(),
-      duration: 43,
+      date: new Date(),
+      length: 43,
     };
-  
+
   });
 
   it('should create', () => {

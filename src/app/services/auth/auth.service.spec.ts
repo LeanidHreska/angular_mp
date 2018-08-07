@@ -1,31 +1,37 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, async, inject } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
-import { UserEntity } from '../../modules/user/models/user-entity.model';
+import { HttpClientModule } from '@angular/common/http';
+import { User } from '../../models/user.model';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AuthService', () => {
-  const user: UserEntity = {
+  const user: User = {
     id: 3,
-    firstName: 'Leanid',
-    lastName: 'Hreska'
-  }
+    name: {
+      first: 'Colleen',
+      last: 'Day',
+    },
+    login: 'Olsen',
+    password: 'in',
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthService]
+      providers: [
+        AuthService,
+      ],
+      imports: [
+        HttpClientTestingModule,
+        HttpClientModule,
+      ]
     });
-
-    localStorage.removeItem('userInfo');
   });
 
-  it('should be created', inject([AuthService], (service: AuthService) => {
+  it('logout should work correctly', inject([AuthService], (service: AuthService) => {
     expect(service).toBeTruthy();
   }));
 
-  it('login should work correctly', inject([AuthService], (service: AuthService) => {
-    service.login(user);
-    expect(JSON.parse(localStorage.getItem('userInfo'))).toEqual(user);
-  }));
 
   it('logout should work correctly', inject([AuthService], (service: AuthService) => {
     service.login(user);
@@ -35,6 +41,8 @@ describe('AuthService', () => {
 
   it('getUserInfo should work correctly', inject([AuthService], (service: AuthService) => {
     service.login(user);
-    expect(service.getUserInfo()).toEqual(user);
+    service.getUserInfo().subscribe(data => {
+      expect(data).toBe(user);
+    });
   }));
 });

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-load-more',
@@ -6,13 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./load-more.component.css']
 })
 export class LoadMoreComponent implements OnInit {
-
+  @Input() public loadItems: Function;
   constructor() { }
 
   ngOnInit() {
   }
 
   onClick() {
-    console.log('Load more!');
+    this.loadItems(true);
   }
 }

@@ -4,6 +4,7 @@ import { LoginPageComponent } from './login-page.component';
 import { MatFormFieldModule, MatCardModule, MatInputModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('LoginPageComponent', () => {
   let component: LoginPageComponent;
@@ -11,13 +12,16 @@ describe('LoginPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginPageComponent ],
+      declarations: [
+        LoginPageComponent
+      ],
       imports: [
         MatFormFieldModule,
         MatCardModule,
         MatInputModule,
         RouterTestingModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        HttpClientTestingModule,
       ]
     })
     .compileComponents();

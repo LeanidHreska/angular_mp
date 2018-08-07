@@ -9,7 +9,9 @@ describe('BreadcrumbsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BreadcrumbsComponent ],
+      declarations: [
+        BreadcrumbsComponent
+      ],
       imports: [
         MatCardModule,
       ]

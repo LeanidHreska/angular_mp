@@ -8,6 +8,8 @@ import { CoursesListItemComponent } from './courses-list/courses-list-item/cours
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CoursesPageComponent', () => {
   let component: CoursesPageComponent;
@@ -29,7 +31,9 @@ describe('CoursesPageComponent', () => {
         BrowserAnimationsModule,
         SharedModule,
         RouterTestingModule,
-        MatDialogModule
+        MatDialogModule,
+        FormsModule,
+        HttpClientTestingModule
       ],
     })
     .compileComponents();

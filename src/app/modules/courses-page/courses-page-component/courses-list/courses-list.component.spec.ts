@@ -6,6 +6,7 @@ import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule } fr
 
 import { CoursesListComponent } from './courses-list.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CoursesListItemComponent } from './courses-list-item/courses-list-item.component';
 
 describe('CoursesListComponent', () => {
@@ -25,7 +26,8 @@ describe('CoursesListComponent', () => {
         MatButtonModule,
         MatInputModule,
         SharedModule,
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientTestingModule
       ],
     })
     .compileComponents();

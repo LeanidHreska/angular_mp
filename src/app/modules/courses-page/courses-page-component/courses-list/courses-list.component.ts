@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class CoursesListComponent implements OnInit {
 
   @Input() public coursesList: CoursesListItem[];
+  @Input() public getItems: Function;
 
   constructor(private coursesService: CoursesService, private router: Router) {
     this.onEditCourse = this.onEditCourse.bind(this);
@@ -20,7 +21,8 @@ export class CoursesListComponent implements OnInit {
   }
 
   onDeleted(courseId: number) {
-    this.coursesService.removeItem(courseId);
+    this.coursesService.removeItem(courseId)
+      .subscribe(() => this.getItems());
   }
 
   onEditCourse(courseId: number) {

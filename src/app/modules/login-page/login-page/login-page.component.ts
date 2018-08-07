@@ -18,10 +18,12 @@ export class LoginPageComponent implements OnInit {
     event.preventDefault();
     this.authService.login({
       id: 1,
-      firstName: 'Leanid',
-      lastName: 'Hreska'
-    });
-    this.router.navigate(['courses']);
+      name: {
+        first: 'Leanid',
+        last: 'Hreska',
+      },
+      login: 'Lowe',
+      password: 'elit'
+    }, () => this.router.navigate(['courses']));
   }
-
 }

@@ -1,39 +1,30 @@
 import { Injectable } from '@angular/core';
-import { head, concat } from 'lodash';
+import { noop } from 'lodash';
 import { CoursesListItem } from '../../models/course-item.model';
+import { HttpClient } from '@angular/common/http';
+import { serverUrl } from '../../config/config';
+import { Observable } from 'rxjs';
+import { HttpResponse } from 'selenium-webdriver/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
-  public coursesList: CoursesListItem[] = [{
-    id: 2,
-    title: 'Video course 2',
-    creationDate: new Date(1535058512080),
-    duration: 65,
-    description: 'someDesc',
-    topRated: false,
-  }, {
-    id: 1,
-    title: 'Video course 1',
-    creationDate: new Date(1530958348080),
-    duration: 12,
-    description: 'Lorem ipsum dolor sit, consectetur. Nunc efficitur congue ornare. Nunc efficitur congue ornare Donec hendrerit frin',
-    topRated: true,
-  }];
+  public coursesList: CoursesListItem[] = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getList() {
-    return this.coursesList;
+  getList(query: string): Observable<CoursesListItem[]> {
+    return this.http.get<CoursesListItem[]>(`${serverUrl}/courses?${query}`);
   }
 
-  getItemById(id: number) {
-    return head(this.coursesList.filter(course => course.id === id));
+  getItemById(id: number): Observable<CoursesListItem> {
+    return this.http.get<CoursesListItem>(`${serverUrl}/courses/${id}`);
   }
 
   createCourse(course: CoursesListItem) {
-    this.coursesList = concat(this.coursesList, course);
+    return this.http.post(`${serverUrl}/courses`, course)
+      .subscribe(noop, error => console.log(error));
   }
 
   updateItem(updatedCourse: CoursesListItem) {
@@ -44,11 +35,7 @@ export class CoursesService {
     });
   }
 
-  removeItem(id: number) {
-    this.coursesList = this.coursesList.filter(course => course.id !== id);
-  }
-
-  getIdForNewCourse(): number {
-    return this.coursesList.reduce((maxId, course) => (maxId < course.id ? course.id : maxId) , 1) + 1;
+  removeItem(id: number): Observable<HttpResponse> {
+    return this.http.delete(`${serverUrl}/courses/${id}`);
   }
 }

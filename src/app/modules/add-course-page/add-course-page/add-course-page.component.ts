@@ -19,9 +19,9 @@ export class AddCoursePageComponent implements OnInit {
 
   public courseItem: CoursesListItem = {
     id: 3,
-    title: '',
-    creationDate: new Date(),
-    duration: 0,
+    name: '',
+    date: new Date(),
+    length: 0,
     description: '',
   };
 
@@ -36,14 +36,11 @@ export class AddCoursePageComponent implements OnInit {
     this.router.params.subscribe((data) => {
       if (!isEmpty(data)) {
         this.routerParams.id = data.id;
-        this.courseItem = this.coursesService.getItemById(parseInt(data.id, 10));
+        this.coursesService.getItemById(parseInt(data.id, 10))
+          .subscribe(course => this.courseItem = course);
         this.isEditing = true;
       }
     });
-
-    if (!this.isEditing) {
-      this.courseItem.id = this.coursesService.getIdForNewCourse();
-    }
   }
 
   onSave() {
