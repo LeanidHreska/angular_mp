@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   getUserInfo() {
-    return this.http.get<User>(`${serverUrl}/auth/userInfo`, {
+    return this.http.post<User>(`${serverUrl}/auth/userInfo`, {
       headers: {
         'Authorization': localStorage.getItem('userToken'),
       }

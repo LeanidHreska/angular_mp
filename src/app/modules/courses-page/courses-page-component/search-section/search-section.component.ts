@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, of, Subject, SubscriptionLike, observable, timer } from 'rxjs';
+import { filter, debounce } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-section',
@@ -10,22 +12,29 @@ export class SearchSectionComponent implements OnInit {
   @Input() public onSearch: Function;
 
   public value = '';
+  private source = new Subject<string>();
+  private subscription: SubscriptionLike;
 
   constructor(public router: Router) {
   }
 
   ngOnInit() {
+    this.subscription = this.source
+      .pipe(debounce(() => timer(200)))
+      .pipe(filter(num => num.length >= 3))
+      .subscribe(val => this.onSearch(val));
   }
 
-  onFind($event) {
-    this.value = $event.target.value;
-  }
-
-  onClick() {
-    this.onSearch(this.value);
+  onChange(value) {
+    console.log(value)
+    this.source.next(value);
   }
 
   handleAddCourse() {
     this.router.navigate(['courses', 'new']);
+  }
+
+  OnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
