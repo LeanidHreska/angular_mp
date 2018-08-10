@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../../models/user.model';
 import { serverUrl } from '../../config/config';
 import { HttpService } from '../http/http.service';
+import { of } from 'rxjs';
 
 
 @Injectable({
@@ -28,7 +29,7 @@ export class AuthService {
   }
 
   isAuth() {
-    return !!localStorage.getItem('userToken');
+    return of(!!localStorage.getItem('userToken'));
   }
 
   getUserInfo() {

@@ -8,7 +8,7 @@ import { filter, debounce } from 'rxjs/operators';
   templateUrl: './search-section.component.html',
   styleUrls: ['./search-section.component.css']
 })
-export class SearchSectionComponent implements OnInit {
+export class SearchSectionComponent implements OnInit, OnDestroy {
   @Input() public onSearch: Function;
 
   public value = '';
@@ -33,7 +33,7 @@ export class SearchSectionComponent implements OnInit {
     this.router.navigate(['courses', 'new']);
   }
 
-  OnDestroy() {
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 }
