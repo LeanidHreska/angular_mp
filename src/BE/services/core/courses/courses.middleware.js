@@ -5,6 +5,7 @@ const url = require('url');
 module.exports = (server) => {
 
 	router.get('/courses', (req, res, next) => {
+		console.error('!!!')
 		let url_parts = url.parse(req.originalUrl, true),
 			query = url_parts.query,
 			from = query.start || 0,
@@ -22,7 +23,7 @@ module.exports = (server) => {
 		}
 		courses = courses.slice(from, to);
 		
-		res.json(courses);
+		setTimeout(() => res.json(courses), 5000);
 	});
 
 	return router;

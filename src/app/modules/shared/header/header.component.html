@@ -8,7 +8,7 @@
     *ngIf="authService.isAuth()"
   >
     <span>
-     {{ user ? user.name.first : 'User Login' }}
+     {{ user ? user.name.first + ' ' + user.name.last : 'User Login' }}
     </span>
     <button
       class="button__custom-font"

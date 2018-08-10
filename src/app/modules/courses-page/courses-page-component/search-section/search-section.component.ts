@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of, Subject, SubscriptionLike, observable, timer } from 'rxjs';
+import { Subject, SubscriptionLike, timer } from 'rxjs';
 import { filter, debounce } from 'rxjs/operators';
 
 @Component({
@@ -26,7 +26,6 @@ export class SearchSectionComponent implements OnInit {
   }
 
   onChange(value) {
-    console.log(value)
     this.source.next(value);
   }
 

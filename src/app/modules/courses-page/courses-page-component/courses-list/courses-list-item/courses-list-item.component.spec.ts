@@ -56,9 +56,8 @@ describe('CoursesListItemComponent', () => {
   describe('=> Class', () => {
     it('should emit deletedCourse event correctly', () => {
       const component = new CoursesListItemComponent();
-      const coursesListItem: CoursesListItem = coursesList[0];
 
-      component.deletedCourse.subscribe(deletedCourse => expect(deletedCourse).toEqual(1))
+      component.deletedCourse.subscribe(deletedCourse => expect(deletedCourse).toEqual(1));
       component.onDelete(1);
     });
   });

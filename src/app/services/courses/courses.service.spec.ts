@@ -7,8 +7,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CoursesService', () => {
 
-  const course: CoursesListItem = coursesList[0];
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
