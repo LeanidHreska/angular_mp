@@ -6,6 +6,8 @@ import { Subject } from 'rxjs';
 })
 export class LoaderService {
   private source = new Subject<boolean>();
+  private loadingArray = [];
+  
   constructor() { }
 
   init() {
@@ -13,6 +15,7 @@ export class LoaderService {
   }
 
   loading(isLoading: boolean) {
-    this.source.next(isLoading);
+    isLoading ? this.loadingArray.push(true) : this.loadingArray.pop();
+    this.source.next(!!this.loadingArray.length);
   }
 }

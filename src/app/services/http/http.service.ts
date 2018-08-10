@@ -12,11 +12,13 @@ export class HttpService {
 
   private makeRequest(method: string, url: string, options?: object): Observable<any> {
     this.loaderService.loading(true);
-    return this.http[method.toLowerCase()](url, options)
-      .pipe(data => {
-        this.loaderService.loading(false);
-        return data;
-      });
+    return Observable.create(observer => {
+      this.http[method](url, options)
+        .subscribe(data => {
+          this.loaderService.loading(false);
+          observer.next(data);
+        });
+    });
   }
 
   get(url: string, options?: object): Observable<any> {
