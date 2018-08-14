@@ -14,6 +14,12 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from './config/routes';
 import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from './http-interceptors';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './reducers/auth.reducer';
+
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './effects/auth.effects';
 
 @NgModule({
   declarations: [
@@ -30,6 +36,16 @@ import { httpInterceptorProviders } from './http-interceptors';
     LoginPageModule,
     CoreModule.forRoot(),
     RouterModule.forRoot(ROUTES, { useHash: true }),
+    StoreModule.forRoot({
+      auth: authReducer,
+    }),
+    EffectsModule.forRoot([
+      AuthEffects
+    ]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: false,
+    }),
   ],
   providers: [
     httpInterceptorProviders,
