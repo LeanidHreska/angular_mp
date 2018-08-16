@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 export class LoaderService {
   private source = new Subject<boolean>();
   private loadingArray = [];
-  
+
   constructor() { }
 
   init() {

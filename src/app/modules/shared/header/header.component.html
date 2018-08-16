@@ -7,8 +7,8 @@
     class="header__authActions"
     *ngIf="authService.isAuth()"
   >
-    <span>
-     {{ user ? user.name.first + ' ' + user.name.last : 'User Login' }}
+    <span *ngIf="!!user">
+     {{ user.name.first | fullname: user.name.last }}
     </span>
     <button
       class="button__custom-font"

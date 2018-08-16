@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoaderService } from '../../../services/loader/loader.service';
-import { SubscriptionLike } from 'rxjs';
+import { SubscriptionLike, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-loading-block',
@@ -8,14 +8,13 @@ import { SubscriptionLike } from 'rxjs';
   styleUrls: ['./loading-block.component.css']
 })
 export class LoadingBlockComponent implements OnInit, OnDestroy {
-  private isShow = false;
+  public loader$: Observable<boolean>;
   private subscription: SubscriptionLike;
 
   constructor(private loaderService: LoaderService) { }
 
   ngOnInit() {
-    this.subscription = this.loaderService.init()
-      .subscribe(isShow => this.isShow = isShow);
+    this.loader$ =  this.loaderService.init();
   }
 
   ngOnDestroy() {

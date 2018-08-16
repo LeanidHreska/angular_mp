@@ -13,6 +13,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SortByPipe } from '../../pipes/sort-by.pipe';
 import { FilterByPipe } from '../../pipes/filter-by.pipe';
 import { LoadingBlockComponent } from './loading-block/loading-block.component';
+import { FullNamePipe } from '../../pipes/fullname/fullname.pipe';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { LoadingBlockComponent } from './loading-block/loading-block.component';
     DurationPipe,
     SortByPipe,
     FilterByPipe,
+    FullNamePipe,
     NotFoundComponent,
     BreadcrumbsComponent,
     LoadingBlockComponent,

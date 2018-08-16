@@ -11,13 +11,13 @@ const initialState = {
   isFetching: false,
 };
 
-export const authReducer = (state: AuthReducer = initialState, action: IAction) => {
+export function authReducer(state: AuthReducer = initialState, action: IAction) {
   switch (action.type) {
     case AuthActionsType.Logout:
       return {...state, token: ''};
 
     case AuthActionsType.LoginSuccess:
-      return {...state, token: action.payload.token }
+      return {...state, token: action.payload.token };
 
     default:
       return state;
