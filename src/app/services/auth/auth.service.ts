@@ -12,7 +12,7 @@ export class AuthService {
   constructor(private http: HttpService, private store: Store<AppState>) { }
 
   isAuth() {
-    return this.store.select(state => !!state.auth.token)
+    return this.store.select(state => !!state.auth.token);
   }
 
   getUserInfo() {

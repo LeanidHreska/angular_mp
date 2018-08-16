@@ -8,29 +8,45 @@ export enum AuthActionsType {
   LoginSuccess = '[AUTH] LoginSuccess',
   LoginFailure = '[AUTH] LoginFailure',
 
-  Logout = '[AUTH] Logout'
+  Logout = '[AUTH] Logout',
+
+  GetUserInfo = '[AUTH] GetUserInfo',
+  GetUserInfoSuccess = '[AUTH] GetUserInfoSuccess',
+  GetUserInfoFailure = '[AUTH] GetUserInfoFailure',
 }
 
 export class Login implements Action {
-  readonly type = AuthActionsType.Login
+  readonly type = AuthActionsType.Login;
 
   constructor(public payload: User) {}
 }
 
 export class LoginSuccess implements Action {
-  readonly type = AuthActionsType.LoginSuccess
+  readonly type = AuthActionsType.LoginSuccess;
 
   constructor(public payload: { token: string }) {}
 }
 
 export class LoginFailure implements Action {
-  readonly type = AuthActionsType.LoginFailure
+  readonly type = AuthActionsType.LoginFailure;
 
   constructor(public payload: any) {}
 }
 
 export class Logout implements Action {
-  readonly type = AuthActionsType.Logout
+  readonly type = AuthActionsType.Logout;
 
   constructor(public payload: any = null) { }
+}
+
+export class GetUserInfo implements Action {
+  readonly type = AuthActionsType.GetUserInfo;
+
+  constructor(public payload: { token: string }) {}
+}
+
+export class GetUserInfoSuccess implements Action {
+  readonly type = AuthActionsType.GetUserInfoSuccess;
+
+  constructor(public payload: User) {}
 }

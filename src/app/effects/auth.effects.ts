@@ -25,5 +25,20 @@ export class AuthEffects {
     )
   );
 
+  @Effect()
+  getUserInfo$: Observable<Action> = this.actions$.pipe(
+    ofType(AuthActionsType.GetUserInfo),
+    mergeMap((action: IAction) =>
+    this.http.post(`${serverUrl}/auth/userInfo`, {
+      headers: {
+        'Authorization': action.payload.token,
+      }}).pipe(
+        map(data => ({ type: AuthActionsType.GetUserInfoSuccess, payload: data })),
+
+        catchError(() => of({ type: AuthActionsType.GetUserInfoFailure }))
+      )
+    )
+  );
+
   constructor(private http: HttpClient, private actions$: Actions, private router: Router) {}
 }

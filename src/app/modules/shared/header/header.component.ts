@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { User } from '../../../models/user.model';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.state';
-import { Logout } from '../../../actions/auth.actions';
-import { SubscriptionLike } from 'rxjs';
+import { Logout, GetUserInfo } from '../../../actions/auth.actions';
+import { SubscriptionLike, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +14,7 @@ import { SubscriptionLike } from 'rxjs';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  public user: User;
+  public user$: Observable<User>;
   private userInfoSubscription: SubscriptionLike;
 
   constructor(public authService: AuthService,
@@ -23,12 +23,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.userInfoSubscription = this.authService.isAuth()
-      .subscribe(isAuth => {
-        if (isAuth) {
-          this.authService.getUserInfo().subscribe(user => this.user = user);
-        }
-      });
+    this.user$ = this.store.select(state => state.auth.user);
+    this.userInfoSubscription = this.store.select(state => state.auth.token).subscribe(token =>
+      token && this.store.dispatch(new GetUserInfo({ token }))
+    );
   }
 
   logout() {
