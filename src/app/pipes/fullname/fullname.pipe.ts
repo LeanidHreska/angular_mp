@@ -7,8 +7,10 @@ import { User } from '../../models/user.model';
 export class FullNamePipe implements PipeTransform {
 
   transform(user: User): string {
-    console.log(user)
-    return `${user.name.first} ${user.name.last}`;
+    if (user) {
+      return `${user.name.first} ${user.name.last}`;
+    }
+    return 'User Login';
   }
 
 }

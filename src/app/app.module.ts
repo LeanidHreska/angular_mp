@@ -20,6 +20,8 @@ import { authReducer } from './reducers/auth.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './effects/auth.effects';
+import { coursesReducer } from './reducers/courses.reducer';
+import { CoursesEffects } from './effects/courses.effects';
 
 @NgModule({
   declarations: [
@@ -38,9 +40,11 @@ import { AuthEffects } from './effects/auth.effects';
     RouterModule.forRoot(ROUTES, { useHash: true }),
     StoreModule.forRoot({
       auth: authReducer,
+      courses: coursesReducer,
     }),
     EffectsModule.forRoot([
-      AuthEffects
+      AuthEffects,
+      CoursesEffects
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

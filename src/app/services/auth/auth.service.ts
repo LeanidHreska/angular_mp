@@ -9,17 +9,9 @@ import { Store } from '@ngrx/store';
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpService, private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) { }
 
   isAuth() {
     return this.store.select(state => !!state.auth.token);
-  }
-
-  getUserInfo() {
-    return this.http.post(`${serverUrl}/auth/userInfo`, {
-      headers: {
-        'Authorization': localStorage.getItem('userToken'),
-      }
-    });
   }
 }

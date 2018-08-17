@@ -29,11 +29,12 @@ export class AuthEffects {
   getUserInfo$: Observable<Action> = this.actions$.pipe(
     ofType(AuthActionsType.GetUserInfo),
     mergeMap((action: IAction) =>
-    this.http.post(`${serverUrl}/auth/userInfo`, {
+    this.http.post(`${serverUrl}/auth/userInfo`, {}, {
       headers: {
         'Authorization': action.payload.token,
-      }}).pipe(
-        map(data => ({ type: AuthActionsType.GetUserInfoSuccess, payload: data })),
+      }
+    }).pipe(
+        map(data => ({ type: AuthActionsType.GetUserInfoSuccess, payload: { user: data } })),
 
         catchError(() => of({ type: AuthActionsType.GetUserInfoFailure }))
       )

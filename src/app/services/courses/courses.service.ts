@@ -16,14 +16,6 @@ export class CoursesService {
 
   constructor(private http: HttpService) { }
 
-  getList(query: string) {
-    return this.http.get(`${serverUrl}/courses?${query}`);
-  }
-
-  getItemById(id: number): Observable<CoursesListItem> {
-    return this.http.get(`${serverUrl}/courses/${id}`);
-  }
-
   createCourse(course: CoursesListItem) {
     return this.http.post(`${serverUrl}/courses`, course)
       .subscribe(noop, error => console.log(error));

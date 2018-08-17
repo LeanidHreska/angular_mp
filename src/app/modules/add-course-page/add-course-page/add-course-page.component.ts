@@ -3,6 +3,9 @@ import { CoursesListItem } from '../../../models/course-item.model';
 import { CoursesService } from '../../../services/courses/courses.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { isEmpty } from 'lodash';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../app.state';
+import { GetCourseById, CreateCourse, EditCourse } from '../../../actions/courses.actions';
 
 @Component({
   selector: 'app-add-course-page',
@@ -10,10 +13,12 @@ import { isEmpty } from 'lodash';
   styleUrls: ['./add-course-page.component.css']
 })
 export class AddCoursePageComponent implements OnInit {
+
   constructor(
     private coursesService: CoursesService,
     private router: ActivatedRoute,
     public navigationRouter: Router,
+    private store: Store<AppState>
   ) {
   }
 
@@ -36,8 +41,9 @@ export class AddCoursePageComponent implements OnInit {
     this.router.params.subscribe((data) => {
       if (!isEmpty(data)) {
         this.routerParams.id = data.id;
-        this.coursesService.getItemById(parseInt(data.id, 10))
-          .subscribe(course => this.courseItem = course);
+        this.store.dispatch(new GetCourseById({ id: parseInt(data.id, 10) }));
+
+        this.store.select(state => state.courses.course).subscribe(course => this.courseItem = course);
         this.isEditing = true;
       }
     });
@@ -45,8 +51,8 @@ export class AddCoursePageComponent implements OnInit {
 
   onSave() {
     this.isEditing
-      ? this.coursesService.updateItem(this.courseItem)
-      : this.coursesService.createCourse(this.courseItem);
+      ? this.store.dispatch(new EditCourse(this.courseItem))      
+      : this.store.dispatch(new CreateCourse(this.courseItem));
 
     this.navigationRouter.navigate(['courses']);
   }
