@@ -23,7 +23,7 @@ module.exports = (server) => {
 		}
 		courses = courses.slice(from, to);
 		
-		setTimeout(() => res.json(courses), 2000);
+		res.json(courses);
 	});
 
 	return router;

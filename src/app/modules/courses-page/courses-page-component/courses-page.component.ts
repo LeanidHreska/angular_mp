@@ -1,26 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CoursesListItem } from '../../../models/course-item.model';
-import { CoursesService } from '../../../services/courses/courses.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../app.state';
+import { GetCoursesList } from '../../../actions/courses.actions';
+import { SubscriptionLike } from 'rxjs';
 @Component({
   selector: 'app-courses-page',
   templateUrl: './courses-page.component.html',
   styleUrls: ['./courses-page.component.css']
 })
-export class CoursesPageComponent implements OnInit {
+export class CoursesPageComponent implements OnInit, OnDestroy {
 
+  private coursesSubscription$: SubscriptionLike;
   public coursesList: CoursesListItem[] = [];
   public paging = {
     start: 0,
     count: 5,
   };
 
-  constructor(private coursesService: CoursesService) {
+  constructor(private store: Store<AppState>) {
     this.getItemsByQuery = this.getItemsByQuery.bind(this);
     this.getItemsByFragment = this.getItemsByFragment.bind(this);
   }
 
   ngOnInit() {
     this.getItemsByQuery();
+    this.coursesSubscription$ = this.store.select(state => state.courses.coursesList)
+      .subscribe(list => this.coursesList = list);
   }
 
   getItemsByQuery(isLoadNextPage?: boolean) {
@@ -39,9 +45,10 @@ export class CoursesPageComponent implements OnInit {
   }
 
   getItems(query: string) {
-    this.coursesService.getList(query)
-      .subscribe((data: CoursesListItem[]) => {
-        this.coursesList = data;
-      });
+    this.store.dispatch(new GetCoursesList({ query }));
+  }
+
+  ngOnDestroy() {
+    this.coursesSubscription$.unsubscribe();
   }
 }

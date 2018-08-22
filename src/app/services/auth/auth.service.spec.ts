@@ -31,18 +31,4 @@ describe('AuthService', () => {
   it('logout should work correctly', inject([AuthService], (service: AuthService) => {
     expect(service).toBeTruthy();
   }));
-
-
-  it('logout should work correctly', inject([AuthService], (service: AuthService) => {
-    service.login(user);
-    service.logout();
-    expect(localStorage.getItem('userInfo')).toBeFalsy();
-  }));
-
-  it('getUserInfo should work correctly', inject([AuthService], (service: AuthService) => {
-    service.login(user);
-    service.getUserInfo().subscribe(data => {
-      expect(data).toBe(user);
-    });
-  }));
 });

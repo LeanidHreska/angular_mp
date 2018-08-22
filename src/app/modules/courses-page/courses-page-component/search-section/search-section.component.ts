@@ -13,13 +13,13 @@ export class SearchSectionComponent implements OnInit, OnDestroy {
 
   public value = '';
   private source = new Subject<string>();
-  private subscription: SubscriptionLike;
+  private searchSubscription: SubscriptionLike;
 
   constructor(public router: Router) {
   }
 
   ngOnInit() {
-    this.subscription = this.source
+    this.searchSubscription = this.source
       .pipe(debounce(() => timer(200)))
       .pipe(filter(num => num.length >= 3))
       .subscribe(val => this.onSearch(val));
@@ -34,6 +34,6 @@ export class SearchSectionComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.searchSubscription.unsubscribe();
   }
 }
