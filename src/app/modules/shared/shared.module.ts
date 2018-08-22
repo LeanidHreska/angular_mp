@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SortByPipe } from '../../pipes/sort-by.pipe';
 import { FilterByPipe } from '../../pipes/filter-by.pipe';
+import { LoadingBlockComponent } from './loading-block/loading-block.component';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { FilterByPipe } from '../../pipes/filter-by.pipe';
     FilterByPipe,
     NotFoundComponent,
     BreadcrumbsComponent,
+    LoadingBlockComponent,
   ],
   exports: [
     HeaderComponent,
@@ -40,6 +42,7 @@ import { FilterByPipe } from '../../pipes/filter-by.pipe';
     DurationPipe,
     SortByPipe,
     FilterByPipe,
+    LoadingBlockComponent,
   ],
   entryComponents: [ModalComponent],
 })

@@ -8,9 +8,13 @@ import { Observable } from 'rxjs';
 export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const authReq = req.clone({
-      headers: req.headers.set('Authorization', localStorage.getItem('userToken'))
-    });
+    let authReq = req;
+    const token = localStorage.getItem('userToken');
+    if (token) {
+      authReq = req.clone({
+        headers: req.headers.set('Authorization', token)
+      });
+    }
 
     return next.handle(authReq);
   }

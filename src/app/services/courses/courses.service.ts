@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { serverUrl } from '../../config/config';
 import { Observable } from 'rxjs';
 import { HttpResponse } from 'selenium-webdriver/http';
+import { LoaderService } from '../loader/loader.service';
+import { HttpService } from '../http/http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +14,14 @@ import { HttpResponse } from 'selenium-webdriver/http';
 export class CoursesService {
   public coursesList: CoursesListItem[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
-  getList(query: string): Observable<CoursesListItem[]> {
-    return this.http.get<CoursesListItem[]>(`${serverUrl}/courses?${query}`);
+  getList(query: string) {
+    return this.http.get(`${serverUrl}/courses?${query}`);
   }
 
   getItemById(id: number): Observable<CoursesListItem> {
-    return this.http.get<CoursesListItem>(`${serverUrl}/courses/${id}`);
+    return this.http.get(`${serverUrl}/courses/${id}`);
   }
 
   createCourse(course: CoursesListItem) {

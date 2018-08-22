@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CoursesService } from '../../services/courses/courses.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
+import { LoaderService} from '../../services/loader/loader.service';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ export class CoreModule {
       providers: [
         CoursesService,
         AuthService,
+        LoaderService,
       ]
     };
   }

@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../models/user.model';
-import { HttpClient, HttpResponse } from '@angular/common/http';
 import { serverUrl } from '../../config/config';
+import { HttpService } from '../http/http.service';
+import { of } from 'rxjs';
 
-interface UserToken {
-  token: string;
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
   login(user: User, callback?: Function) {
-    return this.http.post<UserToken>(`${serverUrl}/auth/login`, user)
+    return this.http.post(`${serverUrl}/auth/login`, user)
       .subscribe(
         data => {
           localStorage.setItem('userToken', data.token);
@@ -31,11 +29,11 @@ export class AuthService {
   }
 
   isAuth() {
-    return !!localStorage.getItem('userToken');
+    return of(!!localStorage.getItem('userToken'));
   }
 
   getUserInfo() {
-    return this.http.get<User>(`${serverUrl}/auth/userInfo`, {
+    return this.http.post(`${serverUrl}/auth/userInfo`, {
       headers: {
         'Authorization': localStorage.getItem('userToken'),
       }

@@ -6,19 +6,12 @@
       <input
         matInput
         placeholder="Name, fragment or date"
-        [(ngModel)]="value"
+        (ngModelChange)="onChange($event)"
+        [ngModel]="value"
         name="search-value"
       >
     </mat-form-field>
   </form>
-  <button
-    mat-raised-button
-    color="primary"
-    class="button__custom-font search-section__search-button"
-    (click)="onClick()"
-  >
-    Search
-  </button>
   <button
     mat-raised-button
     color="accent"
