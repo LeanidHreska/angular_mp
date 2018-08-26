@@ -1,0 +1,40 @@
+.input {
+  font-family: inherit;
+  border: none;
+  border-bottom: 2px solid gainsboro;
+  transition: .3s;
+  outline: none;
+  padding: 5px 0;
+}
+
+.input:hover {
+  border-bottom-color: blueviolet;
+}
+
+.author-select__wrapper {
+  margin-bottom: 50px;
+}
+
+.author-select__options-wrapper {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+
+.author-select__option {
+  background-color: lightgray;
+  width: 40%;
+  height: 30px;
+  line-height: 30px;
+}
+
+.author-select__option:hover {
+  cursor: pointer;
+  background-color: gray;
+}
+
+.author-select__option-selected:hover {
+  color: red;
+  transition: .3s;
+  cursor: pointer;
+}

@@ -1,0 +1,23 @@
+<mat-form-field color="{{ color }}">
+    <mat-label>
+      <span
+        *ngIf="formControl.untouched || formControl.valid"
+      >
+        {{ placeholder }}
+      </span>
+      <span *ngIf="formControl.invalid && formControl.touched">
+        <span *ngIf="formControl.errors.required">{{ placeholder }} is required</span>
+        <span *ngIf="formControl.errors.validateNumberField">
+          Only numbers allowed
+        </span>
+      </span>
+    </mat-label>
+    <input
+      matInput
+      (blur)="onBlur()"
+      (input)="change($event)"
+      value="{{ currValue }}"
+      placeholder="{{placeholder}}"
+      formControlName="formControl"
+    >
+</mat-form-field>

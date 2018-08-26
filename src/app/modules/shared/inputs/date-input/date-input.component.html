@@ -1,0 +1,25 @@
+<mat-form-field
+  color="{{ color }}"
+>
+    <mat-label>
+      <span
+        *ngIf="formControl.untouched || formControl.valid"
+      >
+        {{ placeholder }}
+      </span>
+      <span *ngIf="formControl.invalid && formControl.touched">
+        <span *ngIf="formControl.errors.required">{{ placeholder }} is required</span>
+        <span *ngIf="formControl.errors.validateDate">
+          Use 01/01/2000 pattern for date, please
+        </span>
+      </span>
+    </mat-label>
+    <input
+      matInput
+      (blur)="onBlur()"
+      (input)="change($event)"
+      value="{{ currValue }}"
+      placeholder="{{placeholder}}"
+      formControlName="formControl"
+    >
+</mat-form-field>
