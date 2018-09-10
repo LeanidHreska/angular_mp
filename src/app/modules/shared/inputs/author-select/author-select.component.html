@@ -1,0 +1,25 @@
+<div class="author-select__wrapper">
+  <input
+  name="authors"
+  placeholder="Select authors"
+  class="input"
+  (keyup)="onChange($event)"
+  (blur)="onBlur()"
+  >
+  <div class="author-select__options-wrapper">
+    <div
+      class="author-select__option"
+      *ngFor="let option of suggestedAuthors"
+      (click)="onSuggestedClick(option)"
+    >
+      {{ option.name }}
+    </div>
+  </div>
+  <span
+    class="author-select__option-selected"
+    *ngFor="let author of selectedAuthors"
+  >
+    {{ author.name }}
+    <i class="fa fa-times" aria-hidden="true" (click)="onRemoveAuthor(author.id)"></i>
+  </span>
+</div>

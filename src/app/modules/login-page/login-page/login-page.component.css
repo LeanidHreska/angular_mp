@@ -10,5 +10,6 @@
 }
 
 .login-form__input {
-  width: 100%
+  width: 100%;
+  font-family: 'Amatic+SC', cursive;
 }

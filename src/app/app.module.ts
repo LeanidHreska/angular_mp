@@ -16,12 +16,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from './http-interceptors';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './reducers/auth.reducer';
-
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './effects/auth.effects';
 import { coursesReducer } from './reducers/courses.reducer';
 import { CoursesEffects } from './effects/courses.effects';
+import { authorReducer } from './reducers/authors.reducer';
+import { AuthorsEffects } from './effects/authors.effects'; 
 
 @NgModule({
   declarations: [
@@ -41,10 +42,12 @@ import { CoursesEffects } from './effects/courses.effects';
     StoreModule.forRoot({
       auth: authReducer,
       courses: coursesReducer,
+      authors: authorReducer,
     }),
     EffectsModule.forRoot([
       AuthEffects,
-      CoursesEffects
+      CoursesEffects,
+      AuthorsEffects,
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

@@ -14,7 +14,7 @@ export class LoadingBlockComponent implements OnInit, OnDestroy {
   constructor(private loaderService: LoaderService) { }
 
   ngOnInit() {
-    this.loader$ =  this.loaderService.init();
+    this.loader$ = this.loaderService.init();
   }
 
   ngOnDestroy() {

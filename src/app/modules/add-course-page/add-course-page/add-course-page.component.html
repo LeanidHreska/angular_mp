@@ -1,80 +1,76 @@
 <app-breadcrumbs [title]="courseItem.name"></app-breadcrumbs>
-<form class="add-course-form">
+<form class="add-course-form" [formGroup]="courseForm" (ngSubmit)="onSave()">
   <mat-card
     class="add-course-form__substrate"
   >
     <mat-form-field
       class="add-course-form__input--fullWidth"
+      [floatLabel]="always"
     >
       <mat-label>
-        Title
+        <span *ngIf="courseForm.get('name').untouched || courseForm.get('name').valid"> Title </span>
+        <span *ngIf="courseForm.get('name').invalid && courseForm.get('name').touched">
+          <span *ngIf="courseForm.get('name').errors.required">Title is required</span>
+          <span *ngIf="courseForm.get('name').errors.maxlength">Max length is 50 symbols</span>
+        </span>
       </mat-label>
       <input
         matInput
         name="name"
         placeholder="Title"
-        [(ngModel)]="courseItem.name"
+        formControlName="name"
       >
     </mat-form-field>
     <mat-form-field
       class="add-course-form__input--fullWidth"
     >
       <mat-label>
-        Description
+        <span
+          *ngIf="courseForm.get('description').untouched || courseForm.get('description').valid"
+        >
+          Description
+        </span>
+        <span *ngIf="courseForm.get('description').invalid && courseForm.get('description').touched">
+          <span *ngIf="courseForm.get('description').errors.required">Description is required</span>
+          <span *ngIf="courseForm.get('description').errors.maxlength">Max length is 500 symbols</span>
+        </span>
       </mat-label>
       <textarea
         name="description"
         matInput
         placeholder="Description"
-        [(ngModel)]="courseItem.description"
+        formControlName="description"
       >
       </textarea>
     </mat-form-field>
-    <mat-form-field>
-      <input
-        name="creationDate"
-        matInput
-        [matDatepicker]="courseDatePicker"
-        placeholder="Date"
-        [value]="courseItem.date"
-      >
-      <mat-datepicker-toggle
-        matSuffix
-        [for]="courseDatePicker"
-      >
-      </mat-datepicker-toggle>
-      <mat-datepicker #courseDatePicker></mat-datepicker>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <mat-label>
-        Duration
-      </mat-label>
-      <input
-        name="duration"
-        matInput
-        placeholder="Duration"
-        [(ngModel)]="courseItem.length"
-      >
-    </mat-form-field>
-    <span>
-      {{ courseItem.length | duration }}
-    </span>
-    <mat-form-field
-      class="add-course-form__input--fullWidth"
+
+    <date-input
+      name="Date"
+      [placeholder]="'Date'"
+      [formControl]="courseForm.get('date')"
     >
-      <mat-label>
-        Authors
-      </mat-label>
-      <input
-        matInput
-        placeholder="Authors"
-      >
-    </mat-form-field>
+    </date-input>
+
+    <br>
+    <number-input
+      name="Duration"
+      [placeholder]="'Duration'"
+      [formControl]="courseForm.get('length')"
+    >
+    </number-input>
+   
+    <span>
+      {{ courseForm.controls.length.value | duration }}
+    </span>
+    <author-select
+      [formControl]="courseForm.get('authors')"
+    >
+    </author-select>
     <button
       mat-raised-button
+      type="submit"
       color="primary"
-      (click)="onSave()"
+      [disabled]="courseForm.invalid"
     >
       Save
     </button>
